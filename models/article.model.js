@@ -30,13 +30,6 @@ module.exports = (sequelize) => {
             type: DataTypes.STRING,
             allowNull: true,
             unique : 'UK_Article_Reference'
-        },
-        photo : {
-            type : DataTypes.STRING,
-            allowNull : true,
-            validate : {
-                notEmpty : true,
-            }
         }
     }, {
         tableName : 'Article'
