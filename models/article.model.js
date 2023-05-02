@@ -30,6 +30,10 @@ module.exports = (sequelize) => {
             type: DataTypes.STRING,
             allowNull: true,
             unique : 'UK_Article_Reference'
+        },
+        author : {
+            type: DataTypes.STRING,
+            allowNull: true
         }
     }, {
         tableName : 'Article'
