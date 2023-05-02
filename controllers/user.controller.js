@@ -36,7 +36,7 @@ const userController = {
      */
     create : async (req, res) => {
         const data = req.body;
-        console.log(req.body);
+        // console.log(req.body);
         // -----------------------------------------
         if (req.file) {
             const filename = req.file.filename;

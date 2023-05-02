@@ -13,13 +13,14 @@ const upload = multer({ storage });
 
 userRouter.route('/')
     .get(userController.getAll)
-    .post(userController.create)
-    // .post(upload.single('avatar'), userController.create)
+    // .post(userController.create)
+    .post(upload.single('avatar'), userController.create)
     
     
 userRouter.route('/:id')
     .get(userController.getById)
-    .put(userController.update)
+    // .put(userController.update)
+    .put(upload.single('avatar'), userController.update)
     .delete(userController.delete)
 
 

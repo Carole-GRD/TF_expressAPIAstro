@@ -36,16 +36,17 @@ db.Photo = require('./photo.model')(sequelize);
 
 // Définition des relations
 // Article <-> Mark (One to Many)
+// TODO : ajout d'une option -> un article doit obligatoirement être asocciée à une marque
 db.Mark.hasMany(db.Article);
 db.Article.belongsTo(db.Mark);
 // User <-> Order (One to Many)
 db.User.hasMany(db.Order);
 db.Order.belongsTo(db.User);
 // Article <-> Photo (One to Many)
-// ajouter options pour qu'une image soit asocciée d'office article
+// ajout d'une option -> une photo doit obligatoirement être asocciée à un article
 db.Article.hasMany(db.Photo, {
-    foreignKey: {
-      allowNull: false
+    foreignKey: {     
+      allowNull: false    
     }
   });
 db.Photo.belongsTo(db.Article);
