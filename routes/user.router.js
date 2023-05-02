@@ -15,13 +15,16 @@ userRouter.route('/')
     .get(userController.getAll)
     .post(userController.create)
     // .post(upload.single('avatar'), userController.create)
-   
-
+    
+    
 userRouter.route('/:id')
     .get(userController.getById)
     .put(userController.update)
     .delete(userController.delete)
 
+
+userRouter.route('/:id/avatar')
+    .patch(upload.single('avatar'), userController.updateAvatar)
    
 
 module.exports = userRouter;

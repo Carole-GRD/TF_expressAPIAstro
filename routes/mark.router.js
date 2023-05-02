@@ -9,7 +9,7 @@ markRouter.route('/')
     .post(markController.create)
 
 
-    markRouter.route('/:id')
+markRouter.route('/:id')
     .get(markController.getById)
     .put(markController.update)
     .delete(markController.delete)

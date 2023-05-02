@@ -34,6 +34,18 @@ const userService = {
         return updatedRow[0] === 1;
     },
 
+    updateAvatar : async (id, filename) => {
+        const data = {
+            avatar : `/images/avatars/${filename}`
+        }
+        
+        const updatedRow = await db.User.update(data, {
+            where : { id }
+        });
+
+        return updatedRow[0] === 1;  
+    },
+
     delete : async (id) => {
         const nbDeleteRow = await db.User.destroy({
             where : { id }

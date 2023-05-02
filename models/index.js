@@ -42,7 +42,12 @@ db.Article.belongsTo(db.Mark);
 db.User.hasMany(db.Order);
 db.Order.belongsTo(db.User);
 // Article <-> Photo (One to Many)
-db.Article.hasMany(db.Photo);
+// ajouter options pour qu'une image soit asocciée d'office article
+db.Article.hasMany(db.Photo, {
+    foreignKey: {
+      allowNull: false
+    }
+  });
 db.Photo.belongsTo(db.Article);
 // Article <-> Category (Many to Many)
 db.Article.belongsToMany(db.Category, { through : 'MM_Article_Category' });
