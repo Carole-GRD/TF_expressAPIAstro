@@ -1,5 +1,4 @@
 const CategoryDTO = require('../dto/category.dto');
-const { Book } = require("../models");
 const db = require("../models");
 
 
