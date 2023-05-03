@@ -1,15 +1,16 @@
+const storeController = require('../controllers/store.controller');
 
 
 const storeRouter = require('express').Router();
 
 
 storeRouter.route('/')
-    .get((req, res) => { res.sendStatus(501)})
-    .post((req, res) => { res.sendStatus(501)})
+    .get(storeController.getAll)
+    .post(storeController.create)
 
 storeRouter.route('/:id')
-    .get((req, res) => { res.sendStatus(501)})
-    .put((req, res) => { res.sendStatus(501)})
-    .delete((req, res) => { res.sendStatus(501)})
+    .get(storeController.getById)
+    .put(storeController.update)
+    .delete(storeController.delete)
 
 module.exports = storeRouter;

@@ -55,14 +55,15 @@ module.exports = (sequelize) => {
             allowNull: true
         },
         phone: {
-            type: DataTypes.STRING(15),
+            type: DataTypes.STRING(25),
             allowNull: true,
-            validate: {
-              is: {
-                args: [/^\+?[0-9]{7,14}$/],
-                msg: 'Le numéro de téléphone doit être au format international et doit contenir entre 7 et 14 chiffres'
-              }
-            }
+            // TODO : corriger la validation !
+            // validate: {
+            //   is: {
+            //     args: [/^\+?[0-9]{7,14}$/],
+            //     msg: 'Le numéro de téléphone doit être au format international et doit contenir entre 7 et 14 chiffres'
+            //   }
+            // }
           }
     }, {
         tableName : 'Store'

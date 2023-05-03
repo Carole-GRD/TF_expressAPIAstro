@@ -1,5 +1,4 @@
 
-const { Request, Response } = require('express');
 const orderService = require('../services/order.service');
 
 
@@ -7,11 +6,7 @@ const { SuccessArrayResponse, SuccessResponse} = require('../utils/success.respo
 
 
 const orderController = {
-    /**
-     * Get ALL
-     * @param { Request } req
-     * @param { Response } res
-     */
+
     getAll : async (req, res) => {
         const { orders, count } = await orderService.getAll();
         res.status(200).json(new SuccessArrayResponse(orders, count))
