@@ -1,3 +1,4 @@
+const articleRouter = require('./article.router');
 const categoryRouter = require('./category.router');
 const markRouter = require('./mark.router');
 const orderRouter = require('./order.router');
@@ -9,7 +10,7 @@ const userRouter = require('./user.router');
 
 const router = require('express').Router();
 
-router.use('/article', (req,res) => { res.sendStatus(501) })
+router.use('/article', articleRouter)
 router.use('/category', categoryRouter);
 router.use('/mark', markRouter);
 router.use('/order', orderRouter);

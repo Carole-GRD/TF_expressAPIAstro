@@ -33,6 +33,19 @@ module.exports = (sequelize) => {
                     msg: "Le statut de paiement doit être 'en attente', 'en cours de traitement', 'en cours de préparation', 'prêt pour expédition' ou 'expédiée'"
                 }
             }
+        },
+        store : {
+            type : DataTypes.INTEGER,
+            allowNull: false,
+            validate : {
+                isInt : {
+                    msg : 'L\'id du "store" doit être un nombre entier'
+                },
+                min : {
+                    args : [0],
+                    msg : 'L\'id du "store" doit être positif'
+                }
+            }
         }
         
     },{

@@ -1,4 +1,9 @@
-
+class OrderArticleStoreDTO {
+    constructor( { id, name} ) {
+        this.id = id;
+        this.name = name;
+    }
+}
 
 class OrderArticleDTO {
     constructor( 
@@ -14,7 +19,9 @@ class OrderArticleDTO {
 
                 this.article_quantity =  MM_Article_Order.quantity;
                 this.article_sending_status =  MM_Article_Order.sending_status;
-
+                
+                this.article_store =  MM_Article_Order.store;
+                
             }
 }
 

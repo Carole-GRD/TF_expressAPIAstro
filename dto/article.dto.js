@@ -22,8 +22,8 @@ class ArticleDTO {
          
         this.author = author ?? null;
 
-        this.Orders = Orders ? new ArticleOrderDTO(Orders) : [];
-        this.Stores = Stores ? new ArticleStoreDTO(Stores) : [];
+        this.Orders = Orders ? Orders.map(order => new ArticleOrderDTO(order)) : [];
+        this.Stores = Stores ? Stores.map(store => new ArticleStoreDTO(store)) : [];
     }
 }
 

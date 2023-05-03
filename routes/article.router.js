@@ -1,14 +1,15 @@
+const articleController = require('../controllers/article.controller');
 
 
 const articleRouter = require('express').Router();
 
 
 articleRouter.route('/')
-    .get( (req, res) => { res.sendStatus(501) } )
-    .post( (req, res) => { res.sendStatus(501) } )
+    .get(articleController.getAll)
+    .post(articleController.create)
     
 articleRouter.route('/:id')
-    .get( (req, res) => { res.sendStatus(501) } )
+    .get(articleController.getById)
     .put( (req, res) => { res.sendStatus(501) } )
     .delete( (req, res) => { res.sendStatus(501) } )
 

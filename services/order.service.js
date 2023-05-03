@@ -1,5 +1,5 @@
 const OrderDTO = require("../dto/order.dto");
-const { User, Article, Category } = require("../models");
+const { User, Article, Store } = require("../models");
 const db = require("../models");
 
 
@@ -10,7 +10,7 @@ const orderService = {
             include : [ User, {
                 model : Article,
                 through : { attributes : [ 'quantity', 'sending_status' ] },
-                include : [ Category ]
+                include : [ Store ]
             }]
         })
 
@@ -21,11 +21,11 @@ const orderService = {
     },
 
     getById : async (id) => {
-        const order = await db.Order.findByPk(id, {
+        const order = await db.Order.findByPk(id, { 
             include : [ User, {
                 model : Article,
                 through : { attributes : [ 'quantity', 'sending_status' ] },
-                include : [ Category ]
+                include : [ Store ]
             }]
         });
         

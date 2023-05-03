@@ -15,6 +15,7 @@ const orderController = {
     getById : async (req, res) => {
         const { id } = req.params;
         const order = await orderService.getById(id);
+        console.log('order controller - getById -> order : ', order);
         if (!order) {
             res.sendStatus(404);
             return;
