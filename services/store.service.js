@@ -1,6 +1,5 @@
 
 const StoreDTO = require("../dto/store.dto");
-const { User, Category, Mark } = require("../models");
 const db = require("../models");
 
 
@@ -13,7 +12,6 @@ const storeService = {
 
         return {
             stores : rows.map(store => new StoreDTO(store)),
-            // stores : rows.map(store => store),
             count
         }
     },

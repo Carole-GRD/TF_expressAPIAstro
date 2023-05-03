@@ -8,12 +8,12 @@ class OrderArticleDTO {
             reference,
             MM_Article_Order
         } ) {
-                this.id = id;
-                this.name = name;
-                this.reference = reference;
+                this.article_id = id;
+                this.article_name = name;
+                this.article_reference = reference;
 
-                this.quantity =  MM_Article_Order.quantity;
-                this.sending_status =  MM_Article_Order.sending_status;
+                this.article_quantity =  MM_Article_Order.quantity;
+                this.article_sending_status =  MM_Article_Order.sending_status;
 
             }
 }
