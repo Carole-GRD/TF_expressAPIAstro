@@ -1,4 +1,4 @@
-const { ref } = require("yup");
+
 const ArticleOrderDTO = require("./article.order.dto");
 const ArticleStoreDTO = require("./article.store.dto");
 
@@ -19,7 +19,7 @@ class ArticleDTO {
         this.name = name;
         this.description = description;
         this.reference = reference;
-        
+         
         this.author = author ?? null;
 
         this.Orders = Orders ? new ArticleOrderDTO(Orders) : [];
