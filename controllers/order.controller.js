@@ -43,7 +43,11 @@ const orderController = {
 
     delete : async (req, res) => {
         const { id } = req.params;
-        await orderService.delete(id);
+        const isDeleted = await orderService.delete(id);
+        if (!isDeleted) {
+            res.sendStatus(404);
+            return;
+        }
         res.sendStatus(204);
     }
 }

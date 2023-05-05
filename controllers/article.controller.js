@@ -26,11 +26,24 @@ const articleController = {
     },
 
     update : async (req, res) => {
-
+        const { id } = req.params;
+        const data = req.body;
+        const isUpdated = await articleService.update(id, data);
+        if (!isUpdated) {
+            res.sendStatus(404);
+            return;
+        }
+        res.sendStatus(204);
     },
 
     delete : async (req, res) => {
-
+        const { id } = req.params;
+        const isDeleted = await articleService.delete(id);
+        if (!isDeleted) {
+            res.sendStatus(404);
+            return;
+        }
+        res.sendStatus(204);
     }
 }
 

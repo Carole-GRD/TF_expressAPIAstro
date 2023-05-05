@@ -9,7 +9,7 @@ const orderService = {
             distinct : true,
             include : [ User, {
                 model : Article,
-                through : { attributes : [ 'quantity', 'sending_status' ] },
+                through : { attributes : [ 'quantity', 'sending_status', 'store' ] },
                 include : [ Store ]
             }]
         })
@@ -24,7 +24,7 @@ const orderService = {
         const order = await db.Order.findByPk(id, { 
             include : [ User, {
                 model : Article,
-                through : { attributes : [ 'quantity', 'sending_status' ] },
+                through : { attributes : [ 'quantity', 'sending_status', 'store' ] },
                 include : [ Store ]
             }]
         });
@@ -43,7 +43,8 @@ const orderService = {
                 await order.addArticles(article.id, {
                     through : { 
                         quantity: article.quantity,
-                        sending_status : article.sending_status
+                        sending_status : article.sending_status,
+                        store: article.store
                     }
                 }, transaction)    
             }
@@ -51,7 +52,6 @@ const orderService = {
             await transaction.commit();
 
             const addedOrder = await db.Order.findByPk(order.id, {
-                // include : [ User ]
                 include : [ User, Article ]
             })
 

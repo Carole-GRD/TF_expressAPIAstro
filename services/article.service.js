@@ -59,12 +59,18 @@ const articleService = {
         }
     },
     
-    update : async () => {
-        
+    update : async (id, articleToUpdate) => {
+        const updatedRow = await db.Article.update(articleToUpdate, {
+            where : { id }
+        });
+        return updatedRow[0] === 1; 
     },
     
-    delete : async () => {
-        
+    delete : async (id) => {
+        const nbDeleteRow = await db.Article.destroy({
+            where : { id }
+        });
+        return nbDeleteRow === 1;
     }
 }
 

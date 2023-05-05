@@ -10,8 +10,8 @@ articleRouter.route('/')
     
 articleRouter.route('/:id')
     .get(articleController.getById)
-    .put( (req, res) => { res.sendStatus(501) } )
-    .delete( (req, res) => { res.sendStatus(501) } )
+    .put(articleController.update)
+    .delete(articleController.delete)
 
 
 module.exports = articleRouter;
