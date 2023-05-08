@@ -1,0 +1,47 @@
+[
+    {
+        "firstname" : "Carole", 
+        "lastname" : "Gérard", 
+        "pseudo" : "Caro", 
+        "email" : "carole.gerard@gmail.com", 
+        "password" : "Password_1", 
+        "role" : "Utilisateur", 
+        "avatar" : null
+    },
+    {
+        "firstname" : "Samuel", 
+        "lastname" : "Germeaux", 
+        "pseudo" : "Sam", 
+        "email" : "samuel@gmail.com", 
+        "password" : "Password_2", 
+        "role" : "Utilisateur", 
+        "avatar" : null
+    },
+    {
+        "firstname" : "Lucie", 
+        "lastname" : "Poncelet", 
+        "pseudo" : "Lulu", 
+        "email" : "lucie@gmail.com", 
+        "password" : "Password_3", 
+        "role" : "Utilisateur", 
+        "avatar" : null
+    },
+    {
+        "firstname" : "Clément", 
+        "lastname" : "Poncelet", 
+        "pseudo" : "Clem", 
+        "email" : "clement@gmail.com", 
+        "password" : "Password_4", 
+        "role" : "Utilisateur", 
+        "avatar" : null
+    },
+    {
+        "firstname" : "Nathalie", 
+        "lastname" : "Simon", 
+        "pseudo" : "Nath", 
+        "email" : "nathalie@gmail.com", 
+        "password" : "Password_5", 
+        "role" : "Utilisateur", 
+        "avatar" : null
+    }
+]
