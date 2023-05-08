@@ -84,8 +84,8 @@ const articleController = {
 
         const likedArticles = await articleService.getByLike();
         console.log('article.controller - getByLike (likedArticles) : ', likedArticles);
-        res.status(200).json(likedArticles);
-        // res.status(200).json(new SuccessArrayResponse(likedArticles, count));
+        // res.status(200).json(likedArticles);
+        res.status(200).json(new SuccessArrayResponse(likedArticles));
     }
 }
 
