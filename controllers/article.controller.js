@@ -83,7 +83,7 @@ const articleController = {
     getByLike : async (req, res) => {
 
         const likedArticles = await articleService.getByLike();
-        console.log('article.controller - getByLike (likedArticles) : ', likedArticles);
+        // console.log('article.controller - getByLike (likedArticles) : ', likedArticles);
         // res.status(200).json(likedArticles);
         res.status(200).json(new SuccessArrayResponse(likedArticles));
     }
