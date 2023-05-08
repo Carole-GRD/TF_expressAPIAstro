@@ -24,5 +24,8 @@ articleRouter.route('/:id/like')
 articleRouter.route('/:id/disLike')
     .delete(authJwt(), articleController.disLike)
 
-    
+articleRouter.route('/:id/store')
+    .put(articleController.updateStore)
+
+
 module.exports = articleRouter;

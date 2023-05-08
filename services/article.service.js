@@ -205,6 +205,50 @@ const articleService = {
             likedArticles : articlesTab,
             nbArticles: articlesTab.length
         }
+    },
+
+
+
+    updateStore : async (articleId, data) => {
+        const transaction = await db.sequelize.transaction();
+
+        try {
+
+            // Récupération de l'article
+            const article = await db.Article.findByPk(articleId);
+            if (!article) {
+            throw new Error('Article not found');
+            }
+
+            // Récupération du store
+            const store = await Store.findByPk(data.id);
+            if (!store) {
+            throw new Error('Store not found');
+            }
+
+            // Mise à jour des attributs de la relation Many-to-Many
+            await article.addStore(store, {
+                through: {
+                price: data.price,
+                discount: data.discount,
+                stock: data.stock
+                },
+                transaction: transaction
+            });
+
+            // Validation de la transaction
+            await transaction.commit();
+
+            // Retourne l'article mis à jour
+            const updatedArticle = await db.Article.findByPk(articleId, {
+            include: [Store]
+            });
+            return updatedArticle;
+        } catch (error) {
+            // Annulation de la transaction en cas d'erreur
+            await transaction.rollback();
+            throw error;
+        }
     }
 }
 

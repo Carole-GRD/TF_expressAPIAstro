@@ -1,5 +1,6 @@
 const db = require("../models");
 const articleService = require("../services/article.service");
+const ErrorResponse = require("../utils/error.response");
 const { SuccessArrayResponse, SuccessResponse } = require("../utils/success.response");
 
 
@@ -86,6 +87,23 @@ const articleController = {
         // console.log('article.controller - getByLike (likedArticles) : ', likedArticles);
         // res.status(200).json(likedArticles);
         res.status(200).json(new SuccessArrayResponse(likedArticles));
+    },
+
+    updateStore : async (req, res) => {
+        const articleId = req.params.id;
+        const data = req.body;
+
+        const storeUpdated = await articleService.updateStore(articleId, data);
+        console.log('article.controller - updateStore (storeUpdated) : ', storeUpdated);
+
+        // if (!storeUpdated) {
+        //     res.status(404).json(new ErrorResponse('articleId or storeId not found', 404));
+        //     return;
+        // }
+
+        // // res.location('/article/' + articleId); 
+        
+        res.status(201).json(new SuccessResponse({ msg : 'Store updated with success' }, 201));
     }
 }
 
