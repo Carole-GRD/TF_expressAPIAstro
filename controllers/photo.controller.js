@@ -83,7 +83,7 @@ const photoController = {
         // const connectedUserId = req.user.id;
 
         // if (connectedUserRole !== 'Admin' && connectedUserId !== parseInt(id)) {
-        //     res.status(403).json(new ErrorResponse('Accès interdit, vous n\'êtes ni Admin, ni l\'utilisateur lié au profil',403));
+        //     res.status(403).json(new ErrorResponse('Accès interdit, vous n\'êtes ni Admin',403));
         //     return;
         // }
         
