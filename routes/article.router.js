@@ -24,8 +24,14 @@ articleRouter.route('/:id/like')
 articleRouter.route('/:id/disLike')
     .delete(authJwt(), articleController.disLike)
 
-articleRouter.route('/:id/store')
+articleRouter.route('/:id/updateStore')
     .put(articleController.updateStore)
+
+articleRouter.route('/:id/createStore')
+    .post(articleController.createStore)
+
+articleRouter.route('/:id/deleteStore')
+    .delete(articleController.deleteteStore)
 
 
 module.exports = articleRouter;

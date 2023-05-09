@@ -48,6 +48,7 @@ const articleController = {
         res.sendStatus(204);
     },
 
+
     like : async (req, res ) => {
 
         const articleId = req.params.id;
@@ -89,21 +90,53 @@ const articleController = {
         res.status(200).json(new SuccessArrayResponse(likedArticles));
     },
 
+
     updateStore : async (req, res) => {
         const articleId = req.params.id;
-        const data = req.body;
+        const storeData = req.body;
 
-        const storeUpdated = await articleService.updateStore(articleId, data);
+        const storeUpdated = await articleService.updateStore(articleId, storeData);
         console.log('article.controller - updateStore (storeUpdated) : ', storeUpdated);
 
-        // if (!storeUpdated) {
-        //     res.status(404).json(new ErrorResponse('articleId or storeId not found', 404));
-        //     return;
-        // }
+        if (!storeUpdated) {
+            res.status(404).json(new ErrorResponse('articleId or storeId not found', 404));
+            return;
+        }
 
-        // // res.location('/article/' + articleId); 
+        res.location('/article/' + articleId); 
         
         res.status(201).json(new SuccessResponse({ msg : 'Store updated with success' }, 201));
+    },
+
+    createStore : async (req, res) => {
+        const articleId = req.params.id;
+        const storeData = req.body;
+
+        const articleCreate = await articleService.createStore(articleId, storeData);
+
+        if (!articleCreate) {
+            res.status(404).json(new ErrorResponse('articleId or storeId not found', 404));
+            return;
+        }
+
+        res.location('/article/' + articleId); 
+        
+        res.status(201).json(new SuccessResponse({ msg : 'Link successfully added' }, 201));
+        
+    },
+
+    deleteteStore : async (req, res) => {
+        const articleId = req.params.id;
+        const listStoreId = req.body.stores;
+
+        const articleDelete = await articleService.deleteteStore(articleId, listStoreId);
+
+        if (!articleDelete) {
+            res.status(404).json(new ErrorResponse('articleId or storeId not find - or link not present', 404));
+            return;
+        }
+
+        res.status(204).json(new SuccessResponse({ msg : 'Link successfully removed !'}, 204));
     }
 }
 
