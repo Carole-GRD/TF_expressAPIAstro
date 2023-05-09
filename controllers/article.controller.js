@@ -112,9 +112,9 @@ const articleController = {
         const articleId = req.params.id;
         const storeData = req.body;
 
-        const articleCreate = await articleService.createStore(articleId, storeData);
+        const storeCreate = await articleService.createStore(articleId, storeData);
 
-        if (!articleCreate) {
+        if (!storeCreate) {
             res.status(404).json(new ErrorResponse('articleId or storeId not found', 404));
             return;
         }
@@ -129,9 +129,9 @@ const articleController = {
         const articleId = req.params.id;
         const listStoreId = req.body.stores;
 
-        const articleDelete = await articleService.deleteteStore(articleId, listStoreId);
+        const storeDelete = await articleService.deleteteStore(articleId, listStoreId);
 
-        if (!articleDelete) {
+        if (!storeDelete) {
             res.status(404).json(new ErrorResponse('articleId or storeId not find - or link not present', 404));
             return;
         }

@@ -8,11 +8,16 @@ orderRouter.route('/')
     .get(orderController.getAll)
     .post(orderController.create)
 
-
 orderRouter.route('/:id')
     .get(orderController.getById)
     .put(orderController.update)
     .delete(orderController.delete)
+
+orderRouter.route('/:id/createArticle')
+    .post(orderController.createArticle)
+
+orderRouter.route('/:id/deleteArticle')
+    .delete(orderController.deleteArticle)
 
 
 module.exports = orderRouter;

@@ -199,7 +199,7 @@ const articleService = {
             }
 
             // Récupération du store
-            const store = await Store.findByPk(storeData.id);
+            const store = await db.Store.findByPk(storeData.id);
             if (!store) {
             throw new Error('Store not found');
             }

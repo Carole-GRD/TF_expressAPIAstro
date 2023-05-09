@@ -10,9 +10,10 @@ const { Sequelize, ModelStatic, DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
     const Order = sequelize.define('Order', { 
-        status : {
+        order_status : {
             type: DataTypes.ENUM('En attente', 'Terminée'),
             allowNull: false,
+            defaultValue : 'En attente',
             validate: {
                 isIn: {
                     args: [['En attente', 'Terminée']],
@@ -22,6 +23,18 @@ module.exports = (sequelize) => {
                     if (this.payment_status === 'Payé' && this.sending_status === 'expédiée') {
                         return value = 'Terminée'
                     }
+                }
+            }
+        },
+        sending_status : {
+            type : DataTypes.ENUM,
+            values : ['en attente', 'en cours de préparation', 'prêt pour expédition', 'expédiée'],
+            allowNull : false,
+            defaultValue : 'en attente',
+            validate : {
+                isIn: {
+                    args: [['en attente', 'en cours de préparation', 'prêt pour expédition', 'expédiée']],
+                    msg: "Le statut de paiement doit être 'en attente', 'en cours de préparation', 'prêt pour expédition' ou 'expédiée'"
                 }
             }
         },

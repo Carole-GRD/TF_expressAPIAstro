@@ -22,18 +22,6 @@ module.exports = (sequelize) => {
                 }
             }
         },
-        sending_status : {
-            type : DataTypes.ENUM,
-            values : ['en attente', 'en cours de traitement', 'en cours de préparation', 'prêt pour expédition', 'expédiée'],
-            allowNull : false,
-            defaultValue : 'en attente',
-            validate : {
-                isIn: {
-                    args: [['en attente', 'en cours de traitement', 'en cours de préparation', 'prêt pour expédition', 'expédiée']],
-                    msg: "Le statut de paiement doit être 'en attente', 'en cours de traitement', 'en cours de préparation', 'prêt pour expédition' ou 'expédiée'"
-                }
-            }
-        },
         store : {
             type : DataTypes.INTEGER,
             allowNull: false,

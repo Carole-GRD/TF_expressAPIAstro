@@ -1,5 +1,6 @@
 
 const orderService = require('../services/order.service');
+const ErrorResponse = require('../utils/error.response');
 
 
 const { SuccessArrayResponse, SuccessResponse} = require('../utils/success.response');
@@ -49,7 +50,40 @@ const orderController = {
             return;
         }
         res.sendStatus(204);
+    },
+
+
+    createArticle : async (req, res) => {
+        const orderId = req.params.id;
+        const articleData = req.body;
+
+        const articleCreate = await orderService.createArticle(orderId, articleData);
+
+        if (!articleCreate) {
+            res.status(404).json(new ErrorResponse('articleId or orderId not found', 404));
+            return;
+        }
+
+        res.location('/order/' + orderId); 
+        
+        res.status(201).json(new SuccessResponse({ msg : 'Link successfully added' }, 201));
+    },
+
+    deleteArticle : async (req, res) => {
+        const orderId = req.params.id;
+        const articleId = req.body.article;
+
+        const articleDelete = await orderService.deleteArticle(orderId, articleId);
+
+        if (!articleDelete) {
+            res.status(404).json(new ErrorResponse('orderId or articleId not find - or link not present', 404));
+            return;
+        }
+
+        res.status(204).json(new SuccessResponse({ msg : 'Link successfully removed !'}, 204));
+        
     }
+    
 }
 
 
