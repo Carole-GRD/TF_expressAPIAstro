@@ -69,6 +69,47 @@ module.exports = (sequelize) => {
             validate : {
                 notEmpty : true,
             }
+        },
+        address_street : {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        address_number : {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            validate: {
+                isInt : {
+                    msg : 'Le numéro de la rue doit être un nombre entier'
+                },
+                min: {
+                    args: [1],
+                    msg: 'Le numéro de la rue doit être supérieur ou égal à 1'
+                }
+            }
+        },
+        address_city : {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        address_postalCode : {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            validate: {
+                cp_BE(value) {
+                    if (( this.delivery_country === 'Belgium' || this.delivery_country === 'Belgique' ) && !/^\d{4}$/.test(value)) {            
+                        throw new Error('Le code postal doit contenir 4 chiffres');
+                    }
+                },
+                cp_FR(value) {
+                    if ( this.delivery_country === 'France' && !/^\d{5}$/.test(value)) {   
+                        throw new Error('Le code postal doit contenir 5 chiffres');
+                    }
+                }
+            }
+        },
+        address_country : {
+            type: DataTypes.STRING,
+            allowNull: false
         }
     }, {
         tableName : 'User'

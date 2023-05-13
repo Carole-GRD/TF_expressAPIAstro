@@ -6,24 +6,16 @@ class OrderDTO {
     constructor( 
         {   
             id, 
-            status, 
-            delivery_street,
-            delivery_number,
-            delivery_city,
-            delivery_postalCode,
-            delivery_country,
+            order_status, 
+            sending_status, 
             payment_method,
             payment_status,
             User,
             Articles
         } ) {
                 this.id = id;
-                this.status = status;
-                this.delivery_street = delivery_street;
-                this.delivery_number = delivery_number;
-                this.delivery_city = delivery_city;
-                this.delivery_postalCode = delivery_postalCode;
-                this.delivery_country = delivery_country;
+                this.order_status = order_status;
+                this.sending_status = sending_status;
                 this.payment_method = payment_method;
                 this.payment_status = payment_status;
                 

@@ -257,14 +257,6 @@ VALUES
 	27,
 	3
 )
-INSERT INTO dbo.[MM_Article_Category] (createdAt, updatedAt, ArticleId, CategoryId)
-VALUES 
-(
-	GETDATE(),
-	GETDATE(),
-	27,
-	3
-)
 
 INSERT INTO dbo.[MM_Article_Category] (createdAt, updatedAt, ArticleId, CategoryId)
 VALUES 

@@ -10,7 +10,7 @@ const orderController = {
 
     getAll : async (req, res) => {
         const { orders, count } = await orderService.getAll();
-        res.status(200).json(new SuccessArrayResponse(orders, count))
+        res.status(200).json(new SuccessArrayResponse(orders, count));
     },
 
     getById : async (req, res) => {

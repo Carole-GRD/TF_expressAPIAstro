@@ -7,16 +7,11 @@ USE DBexpressAstro;
 
 BEGIN TRANSACTION;
 
-INSERT INTO dbo.[Order] (order_status, sending_status, delivery_street, delivery_number, delivery_city, delivery_postalCode, delivery_country, payment_method, payment_status, createdAt, updatedAt, UserId)
+INSERT INTO dbo.[Order] (order_status, sending_status, payment_method, payment_status, createdAt, updatedAt, UserId)
 VALUES 
 (
 	'En attente',
     'en cours de préparation',
-    'Allée de Tertibu',
-    5,
-    'Suarlée',
-    5020,
-    'Belgique',
     'PayPal',
     'En attente',
 	GETDATE(),
@@ -24,16 +19,11 @@ VALUES
     1
 )
 
-INSERT INTO dbo.[Order] (order_status, sending_status, delivery_street, delivery_number, delivery_city, delivery_postalCode, delivery_country, payment_method, payment_status, createdAt, updatedAt, UserId)
+INSERT INTO dbo.[Order] (order_status, sending_status, payment_method, payment_status, createdAt, updatedAt, UserId)
 VALUES 
 (
 	'Terminée',
     'expédiée',
-    'Clos de Lorraine',
-    6,
-    'Saint-Léger',
-    4700,
-    'Belgique',
     'Visa',
     'Payé',
 	GETDATE(),

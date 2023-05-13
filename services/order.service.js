@@ -11,7 +11,7 @@ const orderService = {
             distinct : true,
             include : [ User, {
                 model : Article,
-                through : { attributes : [ 'quantity', 'sending_status', 'store' ] },
+                through : { attributes : [ 'quantity', 'store' ] },
                 include : [ Store ]
             }]
         })
@@ -26,7 +26,7 @@ const orderService = {
         const order = await db.Order.findByPk(id, { 
             include : [ User, {
                 model : Article,
-                through : { attributes : [ 'quantity', 'sending_status', 'store' ] },
+                through : { attributes : [ 'quantity', 'store' ] },
                 include : [ Store ]
             }]
         });
