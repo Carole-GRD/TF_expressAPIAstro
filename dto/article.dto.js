@@ -11,6 +11,7 @@ class ArticleDTO {
             description,
             reference,
             author,
+            MarkId,
             Orders,
             Stores
         }
@@ -21,6 +22,8 @@ class ArticleDTO {
         this.reference = reference;
          
         this.author = author ?? null;
+
+        this.MarkId = MarkId ?? null;
 
         this.Orders = Orders ? Orders.map(order => new ArticleOrderDTO(order)) : [];
         this.Stores = Stores ? Stores.map(store => new ArticleStoreDTO(store)) : [];

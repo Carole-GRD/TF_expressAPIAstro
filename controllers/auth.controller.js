@@ -21,6 +21,8 @@ const authController = {
 
         const user = await authService.register(data);
 
+        console.log('auth-controller.js - register : ', user);
+
         if (!user) {
             res.sendStatus(400);
             return;

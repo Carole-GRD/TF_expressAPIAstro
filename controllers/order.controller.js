@@ -14,6 +14,7 @@ const orderController = {
     },
 
     getById : async (req, res) => {
+        console.log(req.params);
         const { id } = req.params;
         const order = await orderService.getById(id);
         console.log('order controller - getById -> order : ', order);
@@ -22,6 +23,17 @@ const orderController = {
             return;
         }
         res.status(200).json(new SuccessResponse(order));
+    },
+
+    getByUser : async (req, res) => {
+        // ↓ Attention : pour récupérer l'id du "User", il faut nommer l'id comme dans la route
+        // orderRouter.route('/user/:userId').get(orderController.getByUser)
+        const { userId } = req.params;
+        
+        const { orders, count } = await orderService.getByUser(userId);
+        // console.log('order controller - getByUser -> orders : ', orders);
+        // console.log('order controller - getByUser -> count : ', count);
+        res.status(200).json(new SuccessArrayResponse(orders, count));
     },
 
     create : async (req, res) => {

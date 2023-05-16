@@ -21,7 +21,11 @@ class OrderDTO {
                 
                 this.User = User ? new OrderUserDTO(User) : null;
  
-                this.Articles = Articles ? Articles.map(article => new OrderArticleDTO(article)) : [];      
+                this.Articles = Articles ? Articles.map(article => {
+                    
+                console.log("Articoles", article);
+                    return new OrderArticleDTO(article) // → Bug is here (●'◡'●)
+                }) : [];      
                 
             }
         }

@@ -30,8 +30,27 @@ const orderService = {
                 include : [ Store ]
             }]
         });
+        console.log(order);
         
         return order ? new OrderDTO(order) : null;
+    },
+
+    getByUser : async (userId) => {
+        const { rows, count } = await db.Order.findAndCountAll({
+            where : {
+                UserId: userId
+            },
+            include : [{
+                model : Article,
+                through : { attributes : [ 'quantity', 'store' ] },
+                include : [ Store ]
+            }]
+        })
+
+        return {
+            orders : rows.map(order => order),
+            count
+        }
     },
 
     create : async (orderToAdd) => {

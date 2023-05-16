@@ -31,4 +31,16 @@ VALUES
     2
 )
 
+INSERT INTO dbo.[Order] (order_status, sending_status, payment_method, payment_status, createdAt, updatedAt, UserId)
+VALUES 
+(
+	'Terminée',
+    'expédiée',
+    'PayPal',
+    'Payé',
+	GETDATE(),
+	GETDATE(),
+    1
+)
+
 COMMIT;

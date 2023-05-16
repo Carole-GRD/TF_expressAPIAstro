@@ -19,5 +19,7 @@ orderRouter.route('/:id/createArticle')
 orderRouter.route('/:id/deleteArticle')
     .delete(orderController.deleteArticle)
 
+orderRouter.route('/user/:userId')
+    .get(orderController.getByUser)
 
 module.exports = orderRouter;

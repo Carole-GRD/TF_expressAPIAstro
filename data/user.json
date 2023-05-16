@@ -3,10 +3,15 @@
         "firstname" : "Carole", 
         "lastname" : "Gérard", 
         "pseudo" : "Caro", 
-        "email" : "carole.gerard@gmail.com", 
+        "email" : "carole@gmail.com", 
         "password" : "Password_1", 
-        "role" : "Utilisateur", 
-        "avatar" : null
+        "role" : "Admin", 
+        "avatar" : null,
+        "address_street": "Allée de Tertibu",
+        "address_number": 10,
+        "address_city": "Namur",
+        "address_postalCode": 5000,
+        "address_country": "Belgique"
     },
     {
         "firstname" : "Samuel", 
@@ -14,8 +19,13 @@
         "pseudo" : "Sam", 
         "email" : "samuel@gmail.com", 
         "password" : "Password_2", 
-        "role" : "Utilisateur", 
-        "avatar" : null
+        "role" : "Sous-Admin", 
+        "avatar" : null,
+        "address_street": "Rue de Vedrin",
+        "address_number": 80,
+        "address_city": "Rhisnes",
+        "address_postalCode": 5080,
+        "address_country": "Belgique"
     },
     {
         "firstname" : "Lucie", 
@@ -24,7 +34,12 @@
         "email" : "lucie@gmail.com", 
         "password" : "Password_3", 
         "role" : "Utilisateur", 
-        "avatar" : null
+        "avatar" : null,
+        "address_street": "Rue du Ruisseau",
+        "address_number": 6,
+        "address_city": "Arlon",
+        "address_postalCode": 6700,
+        "address_country": "Belgique"
     },
     {
         "firstname" : "Clément", 
@@ -33,15 +48,56 @@
         "email" : "clement@gmail.com", 
         "password" : "Password_4", 
         "role" : "Utilisateur", 
-        "avatar" : null
+        "avatar" : null,
+        "address_street": "Rue du Diapason",
+        "address_number": 11,
+        "address_city": "Arlon",
+        "address_postalCode": 6700,
+        "address_country": "Belgique"
     },
     {
-        "firstname" : "Nathalie", 
-        "lastname" : "Simon", 
-        "pseudo" : "Nath", 
-        "email" : "nathalie@gmail.com", 
+        "firstname" : "Joao", 
+        "lastname" : "Martínez", 
+        "pseudo" : "Jo", 
+        "email" : "joao@gmail.com", 
         "password" : "Password_5", 
         "role" : "Utilisateur", 
-        "avatar" : null
+        "avatar" : null,
+        "address_street": "Calle de la Playa",
+        "address_number": 3,
+        "address_city": "Madrid",
+        "address_postalCode": 28001,
+        "address_country": "España"
+    },
+    {
+        "firstname": "Marie-Noëlle",
+        "lastname": "Lenoble",
+        "pseudo": "Mano",
+        "email": "mano@gmail.com",
+        "password": "Password_6",
+        "role": "Utilisateur",
+        "avatar": null,
+        "address_street": "Rue de Mazy",
+        "address_number": 33,
+        "address_city": "Spy",
+        "address_postalCode": 5190,
+        "address_country": "Belgique"
+    },
+    {
+        "firstname": "Serge",
+        "lastname": "Lenoble",
+        "pseudo": "SL",
+        "email": "serge@gmail.com",
+        "password": "Password_7",
+        "role": "Utilisateur",
+        "avatar": null,
+        "address_street": "Rue de Mazy",
+        "address_number": 33,
+        "address_city": "Spy",
+        "address_postalCode": 5190,
+        "address_country": "Belgique"
     }
 ]
+
+
+

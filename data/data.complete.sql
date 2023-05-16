@@ -1,7 +1,15 @@
 
+-- USER -> avec insomnia (voir user.json)
+
+-- rajouter les ORDER après (voir order.sql) car elles sont liées à un "User"
+-- rajouter les MM_Article_User après (voir mm_article_user.sql) car elles sont liées  à un "User"
+-- rajouter les MM_Article_Order après (voir mm_article_order.sql) car elles sont liées à un "Order" qui est lui-même lié à un "User"
+
+
+-- PHOTO -> avec insomnia
+
+
 USE DBexpressAstro;
-
-
 
 
 -- ===============================================================================
@@ -156,24 +164,24 @@ COMMIT;
 --                                USERS    
 -- ===============================================================================
 
-BEGIN TRANSACTION;
+-- BEGIN TRANSACTION;
 
-INSERT INTO dbo.[User] (firstname, lastname, pseudo, email, password, role, avatar, address_street, address_number, address_city, address_postalCode, address_country, createdAt, updatedAt)
-VALUES ('Carole', 'Gérard', 'Caro', 'carole@gmail.com', 'Password_1', 'Admin', null, 'Allée de Tertibu', 10, 'Namur', 5000, 'Belgique', GETDATE(), GETDATE());
+-- INSERT INTO dbo.[User] (firstname, lastname, pseudo, email, password, role, avatar, address_street, address_number, address_city, address_postalCode, address_country, createdAt, updatedAt)
+-- VALUES ('Carole', 'Gérard', 'Caro', 'carole@gmail.com', 'Password_1', 'Admin', null, 'Allée de Tertibu', 10, 'Namur', 5000, 'Belgique', GETDATE(), GETDATE());
 
-INSERT INTO dbo.[User] (firstname, lastname, pseudo, email, password, role, avatar, address_street, address_number, address_city, address_postalCode, address_country, createdAt, updatedAt) 
-VALUES ('Samuel', 'Germeaux', 'Sam', 'samuel@gmail.com', 'Password_2', 'Sous-Admin', null, 'Rue de Vedrin', 18, 'Rhisnes', 5080, 'Belgique', GETDATE(), GETDATE());
+-- INSERT INTO dbo.[User] (firstname, lastname, pseudo, email, password, role, avatar, address_street, address_number, address_city, address_postalCode, address_country, createdAt, updatedAt) 
+-- VALUES ('Samuel', 'Germeaux', 'Sam', 'samuel@gmail.com', 'Password_2', 'Sous-Admin', null, 'Rue de Vedrin', 18, 'Rhisnes', 5080, 'Belgique', GETDATE(), GETDATE());
 
-INSERT INTO dbo.[User] (firstname, lastname, pseudo, email, password, role, avatar, address_street, address_number, address_city, address_postalCode, address_country, createdAt, updatedAt) 
-VALUES ('Lucie', 'Poncelet', 'Lulu', 'lucie@gmail.com', 'Password_3', 'Utilisateur', null, 'Rue du Ruisseau', 6, 'Arlon', 6700, 'Belgique', GETDATE(), GETDATE());
+-- INSERT INTO dbo.[User] (firstname, lastname, pseudo, email, password, role, avatar, address_street, address_number, address_city, address_postalCode, address_country, createdAt, updatedAt) 
+-- VALUES ('Lucie', 'Poncelet', 'Lulu', 'lucie@gmail.com', 'Password_3', 'Utilisateur', null, 'Rue du Ruisseau', 6, 'Arlon', 6700, 'Belgique', GETDATE(), GETDATE());
 
-INSERT INTO dbo.[User] (firstname, lastname, pseudo, email, password, role, avatar, address_street, address_number, address_city, address_postalCode, address_country, createdAt, updatedAt) 
-VALUES ('Clément', 'Poncelet', 'Clem', 'clement@gmail.com', 'Password_4', 'Utilisateur', null, 'Rue des Diapasons', 11, 'Arlon', 6700, 'Belgique', GETDATE(), GETDATE());
+-- INSERT INTO dbo.[User] (firstname, lastname, pseudo, email, password, role, avatar, address_street, address_number, address_city, address_postalCode, address_country, createdAt, updatedAt) 
+-- VALUES ('Clément', 'Poncelet', 'Clem', 'clement@gmail.com', 'Password_4', 'Utilisateur', null, 'Rue des Diapasons', 11, 'Arlon', 6700, 'Belgique', GETDATE(), GETDATE());
 
-INSERT INTO dbo.[User] (firstname, lastname, pseudo, email, password, role, avatar, address_street, address_number, address_city, address_postalCode, address_country, createdAt, updatedAt) 
-VALUES ('Nathalie', 'Simon', 'Nath', 'nathalie@gmail.com', 'Password_5', 'Utilisateur', null, 'Rue Campagnole', 3, 'Suarlée', 5020, 'Belgique', GETDATE(), GETDATE());
+-- INSERT INTO dbo.[User] (firstname, lastname, pseudo, email, password, role, avatar, address_street, address_number, address_city, address_postalCode, address_country, createdAt, updatedAt) 
+-- VALUES ('Nathalie', 'Simon', 'Nath', 'nathalie@gmail.com', 'Password_5', 'Utilisateur', null, 'Rue Campagnole', 3, 'Suarlée', 5020, 'Belgique', GETDATE(), GETDATE());
 
-COMMIT;
+-- COMMIT;
 
 
 
@@ -1896,33 +1904,33 @@ COMMIT;
 -- ===============================================================================
 
 
-BEGIN TRANSACTION;
+-- BEGIN TRANSACTION;
 
-INSERT INTO dbo.[Order] (order_status, sending_status, payment_method, payment_status, createdAt, updatedAt, UserId)
-VALUES 
-(
-	'En attente',
-    'en cours de préparation',
-    'PayPal',
-    'En attente',
-	GETDATE(),
-	GETDATE(),
-    1
-)
+-- INSERT INTO dbo.[Order] (order_status, sending_status, payment_method, payment_status, createdAt, updatedAt, UserId)
+-- VALUES 
+-- (
+-- 	'En attente',
+--     'en cours de préparation',
+--     'PayPal',
+--     'En attente',
+-- 	GETDATE(),
+-- 	GETDATE(),
+--     1
+-- )
 
-INSERT INTO dbo.[Order] (order_status, sending_status, payment_method, payment_status, createdAt, updatedAt, UserId)
-VALUES 
-(
-	'Terminée',
-    'expédiée',
-    'Visa',
-    'Payé',
-	GETDATE(),
-	GETDATE(),
-    2
-)
+-- INSERT INTO dbo.[Order] (order_status, sending_status, payment_method, payment_status, createdAt, updatedAt, UserId)
+-- VALUES 
+-- (
+-- 	'Terminée',
+--     'expédiée',
+--     'Visa',
+--     'Payé',
+-- 	GETDATE(),
+-- 	GETDATE(),
+--     2
+-- )
 
-COMMIT;
+-- COMMIT;
 
 
 
@@ -1941,40 +1949,40 @@ COMMIT;
 --                                MM_Article_Order    
 -- ===============================================================================
 
-BEGIN TRANSACTION;
+-- BEGIN TRANSACTION;
 
-INSERT INTO dbo.[MM_Article_Order] (quantity, store, createdAt, updatedAt, ArticleId, OrderId)
-VALUES 
-(
-	2, 
-    6,
-    GETDATE(),
-	GETDATE(),
-	1,
-	2
-)
-INSERT INTO dbo.[MM_Article_Order] (quantity, store, createdAt, updatedAt, ArticleId, OrderId)
-VALUES 
-(
-	1, 
-    3,
-    GETDATE(),
-	GETDATE(),
-	1,
-	1
-)
-INSERT INTO dbo.[MM_Article_Order] (quantity, store, createdAt, updatedAt, ArticleId, OrderId)
-VALUES 
-(
-	1, 
-    5,
-    GETDATE(),
-	GETDATE(),
-	3,
-	1
-)
+-- INSERT INTO dbo.[MM_Article_Order] (quantity, store, createdAt, updatedAt, ArticleId, OrderId)
+-- VALUES 
+-- (
+-- 	2, 
+--     6,
+--     GETDATE(),
+-- 	GETDATE(),
+-- 	1,
+-- 	2
+-- )
+-- INSERT INTO dbo.[MM_Article_Order] (quantity, store, createdAt, updatedAt, ArticleId, OrderId)
+-- VALUES 
+-- (
+-- 	1, 
+--     3,
+--     GETDATE(),
+-- 	GETDATE(),
+-- 	1,
+-- 	1
+-- )
+-- INSERT INTO dbo.[MM_Article_Order] (quantity, store, createdAt, updatedAt, ArticleId, OrderId)
+-- VALUES 
+-- (
+-- 	1, 
+--     5,
+--     GETDATE(),
+-- 	GETDATE(),
+-- 	3,
+-- 	1
+-- )
 
-COMMIT;
+-- COMMIT;
 
 
 
@@ -2003,43 +2011,43 @@ COMMIT;
 
 
 
-BEGIN TRANSACTION;
+-- BEGIN TRANSACTION;
 
-INSERT INTO dbo.[MM_Article_User] (createdAt, updatedAt, ArticleId, UserId)
-VALUES 
-(
-	GETDATE(),
-	GETDATE(),
-	21,
-	2
-)
-INSERT INTO dbo.[MM_Article_User] (createdAt, updatedAt, ArticleId, UserId)
-VALUES 
-(
-	GETDATE(),
-	GETDATE(),
-	9,
-	2
-)
-INSERT INTO dbo.[MM_Article_User] (createdAt, updatedAt, ArticleId, UserId)
-VALUES 
-(
-	GETDATE(),
-	GETDATE(),
-	21,
-	5
-)
-INSERT INTO dbo.[MM_Article_User] (createdAt, updatedAt, ArticleId, UserId)
-VALUES 
-(
-	GETDATE(),
-	GETDATE(),
-	17,
-	3
-)
+-- INSERT INTO dbo.[MM_Article_User] (createdAt, updatedAt, ArticleId, UserId)
+-- VALUES 
+-- (
+-- 	GETDATE(),
+-- 	GETDATE(),
+-- 	21,
+-- 	2
+-- )
+-- INSERT INTO dbo.[MM_Article_User] (createdAt, updatedAt, ArticleId, UserId)
+-- VALUES 
+-- (
+-- 	GETDATE(),
+-- 	GETDATE(),
+-- 	9,
+-- 	2
+-- )
+-- INSERT INTO dbo.[MM_Article_User] (createdAt, updatedAt, ArticleId, UserId)
+-- VALUES 
+-- (
+-- 	GETDATE(),
+-- 	GETDATE(),
+-- 	21,
+-- 	5
+-- )
+-- INSERT INTO dbo.[MM_Article_User] (createdAt, updatedAt, ArticleId, UserId)
+-- VALUES 
+-- (
+-- 	GETDATE(),
+-- 	GETDATE(),
+-- 	17,
+-- 	3
+-- )
 
 
-COMMIT;
+-- COMMIT;
 
 
 

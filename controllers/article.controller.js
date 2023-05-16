@@ -20,6 +20,16 @@ const articleController = {
         res.status(200).json(new SuccessResponse(article));
     },
 
+    getByIdAndByStore : async (req, res) => {
+        const { id, storeId } = req.params;
+        const article = await articleService.getByIdAndByStore(id, storeId);
+        if (!article) {
+            res.sendStatus(404);
+            return;
+        }
+        res.status(200).json(new SuccessResponse(article));
+    },
+
     create : async (req, res) => {
         const data = req.body;
         const article = await articleService.create(data);

@@ -18,6 +18,9 @@ articleRouter.route('/:id')
     .put(articleController.update)
     .delete(articleController.delete)
 
+articleRouter.route('/:id/store/:storeId')
+    .get(articleController.getByIdAndByStore)
+
 articleRouter.route('/:id/like')
     .post(authJwt(), articleController.like)
 
