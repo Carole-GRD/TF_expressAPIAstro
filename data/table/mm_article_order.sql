@@ -24,7 +24,7 @@ INSERT INTO dbo.[MM_Article_Order] (quantity, store, createdAt, updatedAt, Artic
 VALUES 
 (
 	1, 
-    3,
+    4,
     GETDATE(),
 	GETDATE(),
 	1,
@@ -40,6 +40,47 @@ VALUES
 	3,
 	1
 )
+INSERT INTO dbo.[MM_Article_Order] (quantity, store, createdAt, updatedAt, ArticleId, OrderId)
+VALUES 
+(
+	2, 
+    6,
+    GETDATE(),
+	GETDATE(),
+	38,
+	1
+)
+INSERT INTO dbo.[MM_Article_Order] (quantity, store, createdAt, updatedAt, ArticleId, OrderId)
+VALUES 
+(
+	2, 
+    5,
+    GETDATE(),
+	GETDATE(),
+	33,
+	3
+)
+INSERT INTO dbo.[MM_Article_Order] (quantity, store, createdAt, updatedAt, ArticleId, OrderId)
+VALUES 
+(
+	1, 
+    5,
+    GETDATE(),
+	GETDATE(),
+	33,
+	4
+)
+INSERT INTO dbo.[MM_Article_Order] (quantity, store, createdAt, updatedAt, ArticleId, OrderId)
+VALUES 
+(
+	1, 
+    3,
+    GETDATE(),
+	GETDATE(),
+	8,
+	4
+)
+
 
 
 COMMIT;

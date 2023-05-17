@@ -137,7 +137,7 @@ const orderService = {
             const addedOrder = await db.Order.findByPk(orderId, {
                 include : [ User, {
                     model : Article,
-                    through : { attributes : [ 'quantity', 'sending_status', 'store' ] },
+                    through : { attributes : [ 'quantity', 'store' ] },
                     include : [ Store ]
                 }]
             });

@@ -14,10 +14,10 @@ const orderController = {
     },
 
     getById : async (req, res) => {
-        console.log(req.params);
+        // console.log(req.params);
         const { id } = req.params;
         const order = await orderService.getById(id);
-        console.log('order controller - getById -> order : ', order);
+        // console.log('order controller - getById -> order : ', order);
         if (!order) {
             res.sendStatus(404);
             return;

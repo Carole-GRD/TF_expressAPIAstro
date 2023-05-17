@@ -1177,43 +1177,11 @@ COMMIT;
 
 BEGIN TRANSACTION;
 
+
 INSERT INTO dbo.[MM_Article_Store] (price, discount, stock, createdAt, updatedAt, ArticleId, StoreId)
 VALUES 
 (
-	619,
-    0.1,
-    10,
-    GETDATE(),
-	GETDATE(),
-	1,
-	1
-)
-INSERT INTO dbo.[MM_Article_Store] (price, discount, stock, createdAt, updatedAt, ArticleId, StoreId)
-VALUES 
-(
-	619,
-    0.15,
-    4,
-    GETDATE(),
-	GETDATE(),
-	1,
-	2
-)
-INSERT INTO dbo.[MM_Article_Store] (price, discount, stock, createdAt, updatedAt, ArticleId, StoreId)
-VALUES 
-(
-	619,
-    0.05,
-    7,
-    GETDATE(),
-	GETDATE(),
-	1,
-	3
-)
-INSERT INTO dbo.[MM_Article_Store] (price, discount, stock, createdAt, updatedAt, ArticleId, StoreId)
-VALUES 
-(
-	619,
+	699,
     0.25,
     12,
     GETDATE(),
@@ -1224,7 +1192,7 @@ VALUES
 INSERT INTO dbo.[MM_Article_Store] (price, discount, stock, createdAt, updatedAt, ArticleId, StoreId)
 VALUES 
 (
-	619,
+	619.90,
     0.2,
     8,
     GETDATE(),
@@ -1235,7 +1203,7 @@ VALUES
 INSERT INTO dbo.[MM_Article_Store] (price, discount, stock, createdAt, updatedAt, ArticleId, StoreId)
 VALUES 
 (
-	619,
+	629,
     0,
     10,
     GETDATE(),
@@ -1251,7 +1219,7 @@ VALUES
 INSERT INTO dbo.[MM_Article_Store] (price, discount, stock, createdAt, updatedAt, ArticleId, StoreId)
 VALUES 
 (
-	599,
+	579,
     0.1,
     10,
     GETDATE(),
@@ -1262,18 +1230,7 @@ VALUES
 INSERT INTO dbo.[MM_Article_Store] (price, discount, stock, createdAt, updatedAt, ArticleId, StoreId)
 VALUES 
 (
-	599,
-    0.15,
-    4,
-    GETDATE(),
-	GETDATE(),
-	2,
-	2
-)
-INSERT INTO dbo.[MM_Article_Store] (price, discount, stock, createdAt, updatedAt, ArticleId, StoreId)
-VALUES 
-(
-	599,
+	589,
     0.05,
     7,
     GETDATE(),
@@ -1295,7 +1252,7 @@ VALUES
 INSERT INTO dbo.[MM_Article_Store] (price, discount, stock, createdAt, updatedAt, ArticleId, StoreId)
 VALUES 
 (
-	599,
+	600,
     0.2,
     8,
     GETDATE(),
@@ -1324,39 +1281,6 @@ INSERT INTO dbo.[MM_Article_Store] (price, discount, stock, createdAt, updatedAt
 VALUES 
 (
 	559,
-    0.1,
-    10,
-    GETDATE(),
-	GETDATE(),
-	3,
-	1
-)
-INSERT INTO dbo.[MM_Article_Store] (price, discount, stock, createdAt, updatedAt, ArticleId, StoreId)
-VALUES 
-(
-	559,
-    0.15,
-    4,
-    GETDATE(),
-	GETDATE(),
-	3,
-	2
-)
-INSERT INTO dbo.[MM_Article_Store] (price, discount, stock, createdAt, updatedAt, ArticleId, StoreId)
-VALUES 
-(
-	559,
-    0.05,
-    7,
-    GETDATE(),
-	GETDATE(),
-	3,
-	3
-)
-INSERT INTO dbo.[MM_Article_Store] (price, discount, stock, createdAt, updatedAt, ArticleId, StoreId)
-VALUES 
-(
-	559,
     0.25,
     12,
     GETDATE(),
@@ -1367,7 +1291,7 @@ VALUES
 INSERT INTO dbo.[MM_Article_Store] (price, discount, stock, createdAt, updatedAt, ArticleId, StoreId)
 VALUES 
 (
-	559,
+	559.50,
     0.2,
     8,
     GETDATE(),
@@ -1378,7 +1302,7 @@ VALUES
 INSERT INTO dbo.[MM_Article_Store] (price, discount, stock, createdAt, updatedAt, ArticleId, StoreId)
 VALUES 
 (
-	559,
+	459,
     0,
     10,
     GETDATE(),
@@ -1396,68 +1320,13 @@ INSERT INTO dbo.[MM_Article_Store] (price, discount, stock, createdAt, updatedAt
 VALUES 
 (
 	8250,
-    0.1,
-    10,
-    GETDATE(),
-	GETDATE(),
-	4,
-	1
-)
-INSERT INTO dbo.[MM_Article_Store] (price, discount, stock, createdAt, updatedAt, ArticleId, StoreId)
-VALUES 
-(
-	8250,
-    0.15,
-    4,
-    GETDATE(),
-	GETDATE(),
-	4,
-	2
-)
-INSERT INTO dbo.[MM_Article_Store] (price, discount, stock, createdAt, updatedAt, ArticleId, StoreId)
-VALUES 
-(
-	8250,
-    0.05,
-    7,
-    GETDATE(),
-	GETDATE(),
-	4,
-	3
-)
-INSERT INTO dbo.[MM_Article_Store] (price, discount, stock, createdAt, updatedAt, ArticleId, StoreId)
-VALUES 
-(
-	8250,
     0.25,
     12,
-    GETDATE(),
-	GETDATE(),
-	4,
-	4
-)
-INSERT INTO dbo.[MM_Article_Store] (price, discount, stock, createdAt, updatedAt, ArticleId, StoreId)
-VALUES 
-(
-	8250,
-    0.2,
-    8,
     GETDATE(),
 	GETDATE(),
 	4,
 	5
 )
-INSERT INTO dbo.[MM_Article_Store] (price, discount, stock, createdAt, updatedAt, ArticleId, StoreId)
-VALUES 
-(
-	8250,
-    0,
-    10,
-    GETDATE(),
-	GETDATE(),
-	4,
-	6
-)
 
 
 -- /////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1467,18 +1336,7 @@ VALUES
 INSERT INTO dbo.[MM_Article_Store] (price, discount, stock, createdAt, updatedAt, ArticleId, StoreId)
 VALUES 
 (
-	2056.15,
-    0.1,
-    10,
-    GETDATE(),
-	GETDATE(),
-	5,
-	1
-)
-INSERT INTO dbo.[MM_Article_Store] (price, discount, stock, createdAt, updatedAt, ArticleId, StoreId)
-VALUES 
-(
-	2056.15,
+	2150.5,
     0.15,
     4,
     GETDATE(),
@@ -1489,18 +1347,7 @@ VALUES
 INSERT INTO dbo.[MM_Article_Store] (price, discount, stock, createdAt, updatedAt, ArticleId, StoreId)
 VALUES 
 (
-	2056.15,
-    0.05,
-    7,
-    GETDATE(),
-	GETDATE(),
-	5,
-	3
-)
-INSERT INTO dbo.[MM_Article_Store] (price, discount, stock, createdAt, updatedAt, ArticleId, StoreId)
-VALUES 
-(
-	2056.15,
+	1999.95,
     0.25,
     12,
     GETDATE(),
@@ -1511,7 +1358,7 @@ VALUES
 INSERT INTO dbo.[MM_Article_Store] (price, discount, stock, createdAt, updatedAt, ArticleId, StoreId)
 VALUES 
 (
-	2056.15,
+	2060,
     0.2,
     8,
     GETDATE(),
@@ -1559,7 +1406,7 @@ VALUES
 INSERT INTO dbo.[MM_Article_Store] (price, discount, stock, createdAt, updatedAt, ArticleId, StoreId)
 VALUES 
 (
-	1999.55,
+	2099.55,
     0.05,
     7,
     GETDATE(),
@@ -1570,7 +1417,7 @@ VALUES
 INSERT INTO dbo.[MM_Article_Store] (price, discount, stock, createdAt, updatedAt, ArticleId, StoreId)
 VALUES 
 (
-	1999.55,
+	1999,
     0.25,
     12,
     GETDATE(),
@@ -1581,7 +1428,7 @@ VALUES
 INSERT INTO dbo.[MM_Article_Store] (price, discount, stock, createdAt, updatedAt, ArticleId, StoreId)
 VALUES 
 (
-	1999.55,
+	1899.55,
     0.2,
     8,
     GETDATE(),
@@ -1607,18 +1454,7 @@ VALUES
 INSERT INTO dbo.[MM_Article_Store] (price, discount, stock, createdAt, updatedAt, ArticleId, StoreId)
 VALUES 
 (
-	2056.15,
-    0.1,
-    10,
-    GETDATE(),
-	GETDATE(),
-	7,
-	1
-)
-INSERT INTO dbo.[MM_Article_Store] (price, discount, stock, createdAt, updatedAt, ArticleId, StoreId)
-VALUES 
-(
-	2056.15,
+	2050.00,
     0.15,
     4,
     GETDATE(),
@@ -1630,17 +1466,6 @@ INSERT INTO dbo.[MM_Article_Store] (price, discount, stock, createdAt, updatedAt
 VALUES 
 (
 	2056.15,
-    0.05,
-    7,
-    GETDATE(),
-	GETDATE(),
-	7,
-	3
-)
-INSERT INTO dbo.[MM_Article_Store] (price, discount, stock, createdAt, updatedAt, ArticleId, StoreId)
-VALUES 
-(
-	2056.15,
     0.25,
     12,
     GETDATE(),
@@ -1648,28 +1473,6 @@ VALUES
 	7,
 	4
 )
-INSERT INTO dbo.[MM_Article_Store] (price, discount, stock, createdAt, updatedAt, ArticleId, StoreId)
-VALUES 
-(
-	2056.15,
-    0.2,
-    8,
-    GETDATE(),
-	GETDATE(),
-	7,
-	5
-)
-INSERT INTO dbo.[MM_Article_Store] (price, discount, stock, createdAt, updatedAt, ArticleId, StoreId)
-VALUES 
-(
-	2056.15,
-    0,
-    10,
-    GETDATE(),
-	GETDATE(),
-	7,
-	6
-)
 
 -- /////////////////////////////////////////////////////////////////////////////////////////////////////
 -- /////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1678,7 +1481,7 @@ VALUES
 INSERT INTO dbo.[MM_Article_Store] (price, discount, stock, createdAt, updatedAt, ArticleId, StoreId)
 VALUES 
 (
-	1250,
+	1255,
     0.1,
     10,
     GETDATE(),
@@ -1689,7 +1492,7 @@ VALUES
 INSERT INTO dbo.[MM_Article_Store] (price, discount, stock, createdAt, updatedAt, ArticleId, StoreId)
 VALUES 
 (
-	1250,
+	1350,
     0.15,
     4,
     GETDATE(),
@@ -1700,7 +1503,7 @@ VALUES
 INSERT INTO dbo.[MM_Article_Store] (price, discount, stock, createdAt, updatedAt, ArticleId, StoreId)
 VALUES 
 (
-	1250,
+	1000,
     0.05,
     7,
     GETDATE(),
@@ -1711,7 +1514,7 @@ VALUES
 INSERT INTO dbo.[MM_Article_Store] (price, discount, stock, createdAt, updatedAt, ArticleId, StoreId)
 VALUES 
 (
-	1250,
+	1225,
     0.25,
     12,
     GETDATE(),
@@ -1719,28 +1522,6 @@ VALUES
 	8,
 	4
 )
-INSERT INTO dbo.[MM_Article_Store] (price, discount, stock, createdAt, updatedAt, ArticleId, StoreId)
-VALUES 
-(
-	1250,
-    0.2,
-    8,
-    GETDATE(),
-	GETDATE(),
-	8,
-	5
-)
-INSERT INTO dbo.[MM_Article_Store] (price, discount, stock, createdAt, updatedAt, ArticleId, StoreId)
-VALUES 
-(
-	1250,
-    0,
-    10,
-    GETDATE(),
-	GETDATE(),
-	8,
-	6
-)
 
 -- /////////////////////////////////////////////////////////////////////////////////////////////////////
 -- /////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1749,7 +1530,7 @@ VALUES
 INSERT INTO dbo.[MM_Article_Store] (price, discount, stock, createdAt, updatedAt, ArticleId, StoreId)
 VALUES 
 (
-	1250,
+	1150,
     0.1,
     10,
     GETDATE(),
@@ -1782,7 +1563,7 @@ VALUES
 INSERT INTO dbo.[MM_Article_Store] (price, discount, stock, createdAt, updatedAt, ArticleId, StoreId)
 VALUES 
 (
-	1250,
+	1450,
     0.25,
     12,
     GETDATE(),
@@ -1793,7 +1574,7 @@ VALUES
 INSERT INTO dbo.[MM_Article_Store] (price, discount, stock, createdAt, updatedAt, ArticleId, StoreId)
 VALUES 
 (
-	1250,
+	1400,
     0.2,
     8,
     GETDATE(),
@@ -1842,7 +1623,7 @@ VALUES
 INSERT INTO dbo.[MM_Article_Store] (price, discount, stock, createdAt, updatedAt, ArticleId, StoreId)
 VALUES 
 (
-	32.90,
+	29.50,
     0.05,
     7,
     GETDATE(),
@@ -1861,6 +1642,38 @@ VALUES
 	10,
 	4
 )
+
+-- /////////////////////////////////////////////////////////////////////////////////////////////////////
+-- /////////////////////////////////////////////////////////////////////////////////////////////////////
+-- /////////////////////////////////////////////////////////////////////////////////////////////////////
+
+INSERT INTO dbo.[MM_Article_Store] (price, discount, stock, createdAt, updatedAt, ArticleId, StoreId)
+VALUES 
+(
+	35.90,
+    0.2,
+    8,
+    GETDATE(),
+	GETDATE(),
+	32,
+	1
+)
+INSERT INTO dbo.[MM_Article_Store] (price, discount, stock, createdAt, updatedAt, ArticleId, StoreId)
+VALUES 
+(
+	33.90,
+    0,
+    10,
+    GETDATE(),
+	GETDATE(),
+	32,
+	6
+)
+
+-- /////////////////////////////////////////////////////////////////////////////////////////////////////
+-- /////////////////////////////////////////////////////////////////////////////////////////////////////
+-- /////////////////////////////////////////////////////////////////////////////////////////////////////
+
 INSERT INTO dbo.[MM_Article_Store] (price, discount, stock, createdAt, updatedAt, ArticleId, StoreId)
 VALUES 
 (
@@ -1869,8 +1682,24 @@ VALUES
     8,
     GETDATE(),
 	GETDATE(),
-	10,
-	5
+	33,
+	1
+)
+
+-- /////////////////////////////////////////////////////////////////////////////////////////////////////
+-- /////////////////////////////////////////////////////////////////////////////////////////////////////
+-- /////////////////////////////////////////////////////////////////////////////////////////////////////
+
+INSERT INTO dbo.[MM_Article_Store] (price, discount, stock, createdAt, updatedAt, ArticleId, StoreId)
+VALUES 
+(
+	35.00,
+    0,
+    10,
+    GETDATE(),
+	GETDATE(),
+	35,
+	1
 )
 INSERT INTO dbo.[MM_Article_Store] (price, discount, stock, createdAt, updatedAt, ArticleId, StoreId)
 VALUES 
@@ -1880,9 +1709,103 @@ VALUES
     10,
     GETDATE(),
 	GETDATE(),
-	10,
+	35,
+	3
+)
+INSERT INTO dbo.[MM_Article_Store] (price, discount, stock, createdAt, updatedAt, ArticleId, StoreId)
+VALUES 
+(
+	34.90,
+    0.1,
+    10,
+    GETDATE(),
+	GETDATE(),
+	35,
+	5
+)
+-- /////////////////////////////////////////////////////////////////////////////////////////////////////
+-- /////////////////////////////////////////////////////////////////////////////////////////////////////
+-- /////////////////////////////////////////////////////////////////////////////////////////////////////
+
+INSERT INTO dbo.[MM_Article_Store] (price, discount, stock, createdAt, updatedAt, ArticleId, StoreId)
+VALUES 
+(
+	27.90,
+    0.2,
+    8,
+    GETDATE(),
+	GETDATE(),
+	36,
+	1
+)
+
+-- /////////////////////////////////////////////////////////////////////////////////////////////////////
+-- /////////////////////////////////////////////////////////////////////////////////////////////////////
+-- /////////////////////////////////////////////////////////////////////////////////////////////////////
+
+INSERT INTO dbo.[MM_Article_Store] (price, discount, stock, createdAt, updatedAt, ArticleId, StoreId)
+VALUES 
+(
+	7.90,
+    0.2,
+    4,
+    GETDATE(),
+	GETDATE(),
+	38,
+	4
+)
+INSERT INTO dbo.[MM_Article_Store] (price, discount, stock, createdAt, updatedAt, ArticleId, StoreId)
+VALUES 
+(
+	8.90,
+    0.1,
+    2,
+    GETDATE(),
+	GETDATE(),
+	38,
 	6
 )
+
+-- /////////////////////////////////////////////////////////////////////////////////////////////////////
+-- /////////////////////////////////////////////////////////////////////////////////////////////////////
+-- /////////////////////////////////////////////////////////////////////////////////////////////////////
+
+INSERT INTO dbo.[MM_Article_Store] (price, discount, stock, createdAt, updatedAt, ArticleId, StoreId)
+VALUES 
+(
+	25.95,
+    0,
+    10,
+    GETDATE(),
+	GETDATE(),
+	41,
+	1
+)
+INSERT INTO dbo.[MM_Article_Store] (price, discount, stock, createdAt, updatedAt, ArticleId, StoreId)
+VALUES 
+(
+	28.50,
+    0,
+    10,
+    GETDATE(),
+	GETDATE(),
+	41,
+	4
+)
+INSERT INTO dbo.[MM_Article_Store] (price, discount, stock, createdAt, updatedAt, ArticleId, StoreId)
+VALUES 
+(
+	32.90,
+    0,
+    10,
+    GETDATE(),
+	GETDATE(),
+	41,
+	6
+)
+
+
+
 
 COMMIT;
 
