@@ -11,7 +11,8 @@ const { DB_SERVER, DB_DATABASE, DB_USERNAME, DB_PASSWORD } = process.env;
 // Création d'une nouvelle instance de la classe Sequelize qui va permettre de se connecter à une base de données SQL Server.
 const sequelize = new Sequelize(DB_DATABASE, DB_USERNAME, DB_PASSWORD, {
     host : DB_SERVER,
-    dialect : 'mssql'
+    dialect : 'mssql',
+    logging: console.log 
 })
 
 

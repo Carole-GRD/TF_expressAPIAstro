@@ -29,7 +29,7 @@ const orderController = {
         // ↓ Attention : pour récupérer l'id du "User", il faut nommer l'id comme dans la route
         // orderRouter.route('/user/:userId').get(orderController.getByUser)
         const { userId } = req.params;
-        
+        console.log('order controller - getByUser -> userId : ', userId);
         const { orders, count } = await orderService.getByUser(userId);
         // console.log('order controller - getByUser -> orders : ', orders);
         // console.log('order controller - getByUser -> count : ', count);
@@ -66,7 +66,7 @@ const orderController = {
 
 
     createArticle : async (req, res) => {
-        const orderId = req.params.id;
+        const orderId = parseInt(req.params.id);
         const articleData = req.body;
 
         const articleCreate = await orderService.createArticle(orderId, articleData);

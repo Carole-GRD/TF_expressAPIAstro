@@ -9,6 +9,11 @@ const { Sequelize, ModelStatic, DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
     const MM_Article_Order = sequelize.define('MM_Article_Order', {
+        id : {
+            type: DataTypes.INTEGER,
+            autoIncrement: true,
+            primaryKey: true
+        },
         quantity : {
             type : DataTypes.INTEGER,
             allowNull : false,
@@ -34,6 +39,16 @@ module.exports = (sequelize) => {
                     msg : 'L\'id du "store" doit être positif'
                 }
             }
+        },
+        OrderId : {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            unique : false
+        },
+        ArticleId : {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            unique : false
         }
         
     },{
