@@ -1,21 +1,23 @@
 
 const ArticleDTO = require("../dto/article.dto");
-const { Store, Order, Mark } = require("../models");
+const { Store, Order, Mark, Article_Order } = require("../models");
 const db = require("../models");
 const Sequelize = require('sequelize');
+const Article_OrderModel = require("../models/article_order.model");
 
 
 const articleService = {
     getAll : async () => {
         const { rows, count } = await db.Article.findAndCountAll({
             distinct : true,
-            include : [ Store, Order, Mark ],
+            // include : [ Store, Order, Mark ],
+            include : [ Store, Mark, Article_Order ],
             where : Sequelize.literal(
                     /* Injection d'une partie de la requete "a la main" pour obtenir uniquement les article qui existe dans la Many-To-Many */
                     `EXISTS (SELECT * FROM [dbo].[MM_Article_Store] WHERE ArticleId = [Article].[id])`
                   )
         });
-
+        console.log('rows[0] : ', rows[0]);
         return {
             articles : rows.map(article => new ArticleDTO(article)),
             count
@@ -24,7 +26,8 @@ const articleService = {
     
     getById : async (id) => {
         const article = await db.Article.findByPk(id, {
-            include : [ Store, Order, Mark ]
+            // include : [ Store, Order, Mark ],
+            include : [ Store, Mark, Article_Order ],
         });
 
         return article ? new ArticleDTO(article) : null;

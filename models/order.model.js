@@ -21,7 +21,8 @@ module.exports = (sequelize) => {
                 },
                 customValidator(value) {
                     if (this.payment_status === 'Payé' && this.sending_status === 'expédiée') {
-                        return value = 'Terminée'
+                        // return value = 'Terminée'
+                        this.setDataValue('order_status', 'Terminée');
                     }
                 }
             }

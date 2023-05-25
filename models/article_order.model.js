@@ -2,18 +2,18 @@ const { Sequelize, ModelStatic, DataTypes } = require('sequelize');
 
 
 /**
- * Constructeur du Model MM_Article_Order
+ * Constructeur du Model Article_Order
  * @param {Sequelize} sequelize
  * @returns {ModelStatic<any>}
  */
 
 module.exports = (sequelize) => {
-    const MM_Article_Order = sequelize.define('MM_Article_Order', {
-        id : {
-            type: DataTypes.INTEGER,
-            autoIncrement: true,
-            primaryKey: true
-        },
+    const Article_Order = sequelize.define('Article_Order', {
+        // id : {
+        //     type: DataTypes.INTEGER,
+        //     autoIncrement: true,
+        //     primaryKey: true
+        // },
         quantity : {
             type : DataTypes.INTEGER,
             allowNull : false,
@@ -40,21 +40,19 @@ module.exports = (sequelize) => {
                 }
             }
         },
-        OrderId : {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            unique : false
-        },
-        ArticleId : {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            unique : false
-        }
+        // OrderId : {
+        //     type: DataTypes.INTEGER,
+        //     allowNull: false
+        // },
+        // ArticleId : {
+        //     type: DataTypes.INTEGER,
+        //     allowNull: false
+        // }
         
     },{
-        tableName : 'MM_Article_Order'
+        tableName : 'Article_Order'
     });
 
-    return MM_Article_Order;
+    return Article_Order;
 }
 

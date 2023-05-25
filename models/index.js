@@ -28,7 +28,7 @@ db.Article = require('./article.model')(sequelize);
 db.Category = require('./category.model')(sequelize);
 db.Mark = require('./mark.model')(sequelize);
 db.Order = require('./order.model')(sequelize);
-db.MM_Article_Order = require('./mm_article_order.model')(sequelize);
+db.Article_Order = require('./article_order.model')(sequelize);
 db.Store = require('./store.model')(sequelize);
 db.MM_Article_Store = require('./mm_article_store.model')(sequelize);
 db.User = require('./user.model')(sequelize);
@@ -58,8 +58,19 @@ db.Category.belongsToMany(db.Article, { through : 'MM_Article_Category' });
 db.Article.belongsToMany(db.User, { through : 'MM_Article_User' });
 db.User.belongsToMany(db.Article, { through : 'MM_Article_User' });
 // Article <-> Order (Many to Many avec attributs)
-db.Article.belongsToMany(db.Order, { through : db.MM_Article_Order });
-db.Order.belongsToMany(db.Article, { through : db.MM_Article_Order }, );
+db.Article.hasMany(db.Article_Order);
+db.Article_Order.belongsTo(db.Article);
+db.Order.hasMany(db.Article_Order);
+db.Article_Order.belongsTo(db.Order);
+
+// db.Article.hasMany(db.Article_Order);
+// db.Article_Order.hasOne(db.Article);
+// db.Order.hasMany(db.Article_Order);
+// db.Article_Order.hasOne(db.Order);
+
+// db.Article.belongsToMany(db.Order, { through : db.Article_Order });
+// db.Order.belongsToMany(db.Article, { through : db.Article_Order }, );
+
 // Article <-> Store (Many to Many avec attributs)
 db.Article.belongsToMany(db.Store, { through : db.MM_Article_Store });
 db.Store.belongsToMany(db.Article, { through : db.MM_Article_Store }, );

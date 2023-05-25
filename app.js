@@ -38,7 +38,7 @@ if(process.env.NODE_ENV === 'development') {
     // db.sequelize.sync({ force : true });
     // db.sequelize.sync({ alter : { drop : false }});
     // db.User.sync({ alter : { drop : false } });
-    // db.MM_Article_Order.sync({ force : true });
+    // db.Article_Order.sync({ force : true });
 }
 
 

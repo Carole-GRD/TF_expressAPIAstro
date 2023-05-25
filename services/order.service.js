@@ -1,5 +1,5 @@
 const OrderDTO = require("../dto/order.dto");
-const { User, Article, Store } = require("../models");
+const { User, Article, Store, Article_Order } = require("../models");
 const db = require("../models");
 const { Op } = require("sequelize");
 
@@ -10,11 +10,7 @@ const orderService = {
     getAll : async () => {
         const { rows, count } = await db.Order.findAndCountAll({
             distinct : true,
-            include : [ User, {
-                model : Article,
-                through : { attributes : [ 'quantity', 'store' ] },
-                include : [ Store ]
-            }]
+            include : [Article_Order],
         })
 
         return {
@@ -25,13 +21,9 @@ const orderService = {
 
     getById : async (id) => {
         const order = await db.Order.findByPk(id, { 
-            include : [ User, {
-                model : Article,
-                through : { attributes : [ 'quantity', 'store' ] },
-                include : [ Store ]
-            }]
+            include : [Article_Order],
         });
-        console.log(order);
+        console.log('ORDER : ', order);
         
         return order ? new OrderDTO(order) : null;
     },
@@ -41,11 +33,7 @@ const orderService = {
             where : {
                 UserId: userId
             },
-            include : [{
-                model : Article,
-                through : { attributes : [ 'quantity', 'store' ] },
-                //include : [ Store ]
-            }],
+            include : [Article_Order],
             distinct : true
             
         })
@@ -143,7 +131,7 @@ const orderService = {
 
             // Récupération de tous les liens
             // ------------------------------
-            const allLinks = await db.MM_Article_Order.findAll({
+            const allLinks = await db.Article_Order.findAll({
                 attributes: ['OrderId', 'ArticleId', "store"]
             });
             // console.log('order.service - createArticle (allLinks) : ', allLinks);
@@ -169,7 +157,7 @@ const orderService = {
                     // console.log('linkObjet : ', linkObjet);
                     // console.log('articleDataObjet : ', articleDataObjet);
                     console.log('UPDATE LINK');
-                    isUpdated = await db.MM_Article_Order.update({ quantity : articleData.quantity }, { 
+                    isUpdated = await db.Article_Order.update({ quantity : articleData.quantity }, { 
                         where : {
                             [Op.and]: [
                                 { OrderId: orderId }, 
@@ -191,7 +179,7 @@ const orderService = {
             if (isUpdated[0] === 0) {
                 console.log('CREATE LINK');
                 // Mise à jour des attributs de la relation Many-to-Many
-                await db.MM_Article_Order.create(articleData);
+                await db.Article_Order.create(articleData);
             }
             
             // ////////////////////////////////////////////////////////////////////////////////////////////////

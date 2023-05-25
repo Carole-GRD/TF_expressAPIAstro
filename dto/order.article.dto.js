@@ -16,18 +16,18 @@ class OrderArticleDTO {
             id, 
             name,
             reference,
-            MM_Article_Order,
+            Article_Order,
             Stores
         } ) {
                 this.article_id = id;
                 this.article_name = name;
                 this.article_reference = reference;
 
-                this.article_quantity =  MM_Article_Order.quantity;
-                this.article_sending_status =  MM_Article_Order.sending_status;
+                this.article_quantity =  Article_Order.quantity;
+                this.article_sending_status =  Article_Order.sending_status;
 
         
-                this.article_store =  Stores ? new OrderArticleStoreDTO(Stores.find(store => store.id === MM_Article_Order.store)) : [];  
+                this.article_store =  Stores ? new OrderArticleStoreDTO(Stores.find(store => store.id === Article_Order.store)) : [];  
                 
             }
 }
