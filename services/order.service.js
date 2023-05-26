@@ -1,5 +1,5 @@
 const OrderDTO = require("../dto/order.dto");
-const { User, Article, Store, Article_Order } = require("../models");
+const { User, Article, Store, Article_Order, MM_Article_Store } = require("../models");
 const db = require("../models");
 const { Op } = require("sequelize");
 
@@ -33,7 +33,14 @@ const orderService = {
             where : {
                 UserId: userId
             },
-            include : [Article_Order],
+            // include : [Article_Order],
+            include : [ {
+                model : Article_Order,
+                include : [ {
+                    model : Article,
+                    include : [ Store ]
+                } ]
+            }],
             distinct : true
             
         })
