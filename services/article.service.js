@@ -17,7 +17,7 @@ const articleService = {
                     `EXISTS (SELECT * FROM [dbo].[MM_Article_Store] WHERE ArticleId = [Article].[id])`
                   )
         });
-        console.log('rows[0] : ', rows[0]);
+        // console.log('rows[0] : ', rows[0]);
         return {
             articles : rows.map(article => new ArticleDTO(article)),
             count

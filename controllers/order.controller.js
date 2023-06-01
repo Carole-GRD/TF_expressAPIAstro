@@ -29,7 +29,7 @@ const orderController = {
         // ↓ Attention : pour récupérer l'id du "User", il faut nommer l'id comme dans la route
         // orderRouter.route('/user/:userId').get(orderController.getByUser)
         const { userId } = req.params;
-        console.log('order controller - getByUser -> userId : ', userId);
+        // console.log('order controller - getByUser -> userId : ', userId);
         const { orders, count } = await orderService.getByUser(userId);
         // console.log('order controller - getByUser -> orders : ', orders);
         // console.log('order controller - getByUser -> count : ', count);
@@ -66,9 +66,9 @@ const orderController = {
 
 
     createArticle : async (req, res) => {
-        const orderId = parseInt(req.params.id);
+        const orderId = req.params.id;
         const articleData = req.body;
-
+        
         const articleCreate = await orderService.createArticle(orderId, articleData);
 
         if (!articleCreate) {
@@ -83,9 +83,11 @@ const orderController = {
 
     deleteArticle : async (req, res) => {
         const orderId = req.params.id;
-        const articleId = req.body.article;
-
-        const articleDelete = await orderService.deleteArticle(orderId, articleId);
+        console.log('controller - req.body !!!!!!!!!!!!!!!!!!!!!!!!!!!! : ', req.body);
+        const link = req.body.link;
+        console.log('controller - link !!!!!!!!!!!!!!!!!!!!!!!!!!!! : ', link);
+        
+        const articleDelete = await orderService.deleteArticle(orderId, link);
 
         if (!articleDelete) {
             res.status(404).json(new ErrorResponse('orderId or articleId not find - or link not present', 404));

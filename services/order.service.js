@@ -23,7 +23,7 @@ const orderService = {
         const order = await db.Order.findByPk(id, { 
             include : [Article_Order],
         });
-        console.log('ORDER : ', order);
+        // console.log('ORDER : ', order);
         
         return order ? new OrderDTO(order) : null;
     },
@@ -45,7 +45,7 @@ const orderService = {
             
         })
 
-        console.log(rows)
+        // console.log(rows)
 
         return {
             orders : rows.map(order => order),
@@ -106,10 +106,8 @@ const orderService = {
 
         try {
 
-            // console.log('order.service - createArticle (orderId) : ', orderId);
-            // console.log('order.service - createArticle (articleData) : ', articleData);
-
             // Récupération de la commande
+            // ----------------------------
             const order = await db.Order.findByPk(orderId);
             if (!order) {
                 throw new Error('Order not found');
@@ -117,101 +115,65 @@ const orderService = {
             // console.log('order.service - createArticle (order.id) : ', order.id);
 
 
+
             // TODO: vérifier si la personne qui veut faire les modifications 
             //      -> est l'utilisateur qui veut passer la commande (pour ajouter, supprimer des articles)
 
 
-            // Récupération de l'article
-            articleData.OrderId = orderId;
-            const article = await db.Article.findByPk(articleData.ArticleId);
-            if (!article) {
-                throw new Error('Article not found');
-            }
-            // console.log('order.service - createArticle (article.id) : ', article.id);
-            console.log('order.service - createArticle (article) : ', article);
+
+            // Vérifier si le lien existe déjà
+            // -------------------------------
+            const existingLink = await db.Article_Order.findOne({
+                where: {
+                  OrderId: orderId,
+                  ArticleId: articleData.ArticleId,
+                  store: articleData.store,
+                },
+              });
+          
 
 
-
-            // ////////////////////////////////////////////////////////////////////////////////////////////////
-            // Vérifier qu'il n'existe pas déjà un lien entre cette commande et l'article de ce magasin
-            // ////////////////////////////////////////////////////////////////////////////////////////////////
-
-            // Récupération de tous les liens
-            // ------------------------------
-            const allLinks = await db.Article_Order.findAll({
-                attributes: ['OrderId', 'ArticleId', "store"]
-            });
-            // console.log('order.service - createArticle (allLinks) : ', allLinks);
-
-
-           
-
-            // Création d'un objet avec le lien à comparer
-            // -------------------------------------------
-            const articleDataObjet = {
-                OrderId: orderId,
-                ArticleId: articleData.ArticleId,
-                store: articleData.store
-            }
-            // console.log('order.service - createArticle (articleDataObjet) : ', articleDataObjet);
-
-
-            // Boucle sur le tableau pour créer un nouveau lien si cet article (provenant d'un autre magasin) est déjà sur la commande
-            // ------------------------------------------------------------------------------------------------------------------------
-            let isUpdated = [ 0 ];
-            for (let linkObjet of allLinks) {
-                if (linkObjet.OrderId === articleDataObjet.OrderId && linkObjet.ArticleId === articleDataObjet.ArticleId && linkObjet.store === articleDataObjet.store) {
-                    // console.log('linkObjet : ', linkObjet);
-                    // console.log('articleDataObjet : ', articleDataObjet);
-                    console.log('UPDATE LINK');
-                    isUpdated = await db.Article_Order.update({ quantity : articleData.quantity }, { 
-                        where : {
-                            [Op.and]: [
-                                { OrderId: orderId }, 
-                                { ArticleId: articleData.ArticleId },
-                                { store: articleData.store }
-                            ]
-                        }
-                    });
-                }
-            }
-            console.log('isUpdated[0] : ', isUpdated[0]);
-            // on a vérifier la correspondance et si match -> update qty
-
-
-
-    
-            // Créer le lien s'il n'a pas encore été créé
-            // ------------------------------------------
-            if (isUpdated[0] === 0) {
-                console.log('CREATE LINK');
-                // Mise à jour des attributs de la relation Many-to-Many
-                await db.Article_Order.create(articleData);
-            }
-            
-            // ////////////////////////////////////////////////////////////////////////////////////////////////
-
+            // Si le lien existe déjà, mettre à jour la quantité
+            // sinon, créer un nouveau lien
+            // --------------------------------------------------
+            if (existingLink) {  
+                await existingLink.update({ quantity: articleData.quantity });
+            } 
+            else {
+                await db.Article_Order.create({
+                  OrderId: orderId,
+                  ArticleId: articleData.ArticleId,
+                  quantity: articleData.quantity,
+                  store: articleData.store,
+                });
+              }
+          
 
 
             // Validation de la transaction
+            // ----------------------------
             await transaction.commit();
 
-            // Retourne l'article mis à jour
-            const updatedOrder = await db.Order.findByPk(orderId, {
-                include : [ User, {
-                    model : Article,
-                    through : { attributes : [ 'quantity', 'store' ] },
-                    include : [ Store ]
-                }]
-            });
-            // console.log('order.service - createArticle (addedOrder) : ', addedOrder);
 
-            // console.log('order.service - createArticle (addedOrder.dataValues.Articles) : ', addedOrder.dataValues.Articles);
-            // addedOrder.dataValues.Articles.forEach(article => {
-            //     console.log('order.service - createArticle (article) : ', article);
-            // });
 
-            return updatedOrder;
+            // Retourner l'article mis à jour
+            // ------------------------------
+              const updatedOrder = await db.Order.findByPk(orderId, {
+                include: [
+                  User,
+                  {
+                    model: Article_Order,
+                    include: [
+                      {
+                        model: Article,
+                        include: [Store],
+                      },
+                    ],
+                  },
+                ],
+              });
+          
+              return updatedOrder;
 
         } catch (error) {
             console.log(error);
@@ -221,10 +183,14 @@ const orderService = {
         }
     },
 
-    deleteArticle : async (orderId, articleId) => {
+    deleteArticle : async (orderId, link) => {
+        // console.log('orderId : ', orderId);
+        console.log('service - link !!!!!!!!!!!!!!!!!!!!!!!!!!!! : ', link);
+
         const transaction = await db.sequelize.transaction();
 
         try {
+            // Récupération de la commande
             const order = await db.Order.findByPk(orderId);
             if (!order) {
                 throw new Error('Order not found');
@@ -233,15 +199,17 @@ const orderService = {
             // TODO: vérifier si la personne qui veut faire les modifications 
             //      -> est l'utilisateur qui veut passer la commande (pour ajouter, supprimer des articles)
 
-            const article = await db.Article.findByPk(articleId);
-            if (!article) {
-                throw new Error('Store not found');
+
+             // Suppression du lien de l'article
+            const result = await db.Article_Order.destroy({
+                where: { id: link }
+            });
+  
+            // Vérification de la suppression
+            if (result !== 1) {
+                throw new Error('Link "Article_Order" not found');
             }
 
-            const link = await order.hasArticles(article);
-            if (link) {
-                await order.removeArticles(article, {transaction});
-            }
 
             await transaction.commit();
 
@@ -249,7 +217,7 @@ const orderService = {
 
         }
         catch (err) {
-            console.log(err);
+            console.log('ERREUR : ', err);
             await transaction.rollback();
             return null;
         }

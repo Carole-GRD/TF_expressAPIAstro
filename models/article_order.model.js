@@ -22,7 +22,7 @@ module.exports = (sequelize) => {
                     msg : 'Le nombre d\'articles achetés doit être un nombre entier'
                 },
                 min : {
-                    args : [0],
+                    args : [0],      //  /!\ à corriger !   => "args : [1]"    => le minimum autorisé, c'est 1 et pas 0 
                     msg : 'Le nombre d\'articles achetés doit être positif'
                 }
             }
