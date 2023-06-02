@@ -143,7 +143,7 @@ const orderService = {
                 await db.Article_Order.create({
                   OrderId: orderId,
                   ArticleId: articleData.ArticleId,
-                  quantity: articleData.quantity,
+                  quantity: 1,
                   store: articleData.store,
                 });
               }

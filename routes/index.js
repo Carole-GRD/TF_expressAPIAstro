@@ -11,7 +11,7 @@ const userRouter = require('./user.router');
 
 const router = require('express').Router();
 
-router.use('/article', articleRouter)
+router.use('/article', articleRouter);
 router.use('/auth', authRouter);
 router.use('/category', categoryRouter);
 router.use('/mark', markRouter);

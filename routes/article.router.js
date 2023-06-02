@@ -21,6 +21,11 @@ articleRouter.route('/:id')
 articleRouter.route('/:id/store/:storeId')
     .get(articleController.getByIdAndByStore)
 
+// ============================================================ 
+articleRouter.route('/:id/store/:storeId/order/:orderId')
+.get(articleController.getByIdAndByStoreAndByOrder)
+// ============================================================ 
+
 articleRouter.route('/:id/like')
     .post(authJwt(), articleController.like)
 

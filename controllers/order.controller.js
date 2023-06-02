@@ -36,6 +36,19 @@ const orderController = {
         res.status(200).json(new SuccessArrayResponse(orders, count));
     },
 
+    
+    // =======================================================================================
+    // getByIdAndByArticleAndByStore : async (req, res) => {
+    //     const { id, articleId, storeId } = req.params;
+    //     const article = await articleService.getByIdAndByStore(id, storeId, orderId);
+    //     if (!article) {
+    //         res.sendStatus(404);
+    //         return;
+    //     }
+    //     res.status(200).json(new SuccessResponse(article));
+    // },
+    // =======================================================================================
+
     create : async (req, res) => {
         const data = req.body;
         const order = await orderService.create(data);
@@ -83,9 +96,9 @@ const orderController = {
 
     deleteArticle : async (req, res) => {
         const orderId = req.params.id;
-        console.log('controller - req.body !!!!!!!!!!!!!!!!!!!!!!!!!!!! : ', req.body);
+        // console.log('order.controller - req.body !!!!!!!!!!!!!!!!!!!!!!!!!!!! : ', req.body);
         const link = req.body.link;
-        console.log('controller - link !!!!!!!!!!!!!!!!!!!!!!!!!!!! : ', link);
+        // console.log('order.controller - link !!!!!!!!!!!!!!!!!!!!!!!!!!!! : ', link);
         
         const articleDelete = await orderService.deleteArticle(orderId, link);
 

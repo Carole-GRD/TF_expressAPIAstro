@@ -10,10 +10,10 @@ const articleService = {
     getAll : async () => {
         const { rows, count } = await db.Article.findAndCountAll({
             distinct : true,
-            // include : [ Store, Order, Mark ],
             include : [ Store, Mark, Article_Order ],
+            // ↓ on ne récupère que les articles qui sont liés à un magasin 
             where : Sequelize.literal(
-                    /* Injection d'une partie de la requete "a la main" pour obtenir uniquement les article qui existe dans la Many-To-Many */
+                    /* Injection d'une partie de la requête "à la main" pour obtenir uniquement les articles qui existent dans la Many-To-Many (MM_Article_Store) */
                     `EXISTS (SELECT * FROM [dbo].[MM_Article_Store] WHERE ArticleId = [Article].[id])`
                   )
         });
@@ -43,6 +43,21 @@ const articleService = {
 
         return article ? article : null;
     },
+
+    // ==============================================================
+    getByIdAndByStoreAndByOrder : async (id, storeId, orderId) => {
+        const article = await db.Article_Order.findOne({
+            where : { 
+                ArticleId : id,
+                store : storeId,
+                OrderId : orderId
+            }
+        });
+
+        return article ? article : null;
+    },
+    // ==============================================================
+
     
     create : async (articleToAdd) => {
         
