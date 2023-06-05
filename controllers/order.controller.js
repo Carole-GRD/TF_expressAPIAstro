@@ -36,19 +36,6 @@ const orderController = {
         res.status(200).json(new SuccessArrayResponse(orders, count));
     },
 
-    
-    // =======================================================================================
-    // getByIdAndByArticleAndByStore : async (req, res) => {
-    //     const { id, articleId, storeId } = req.params;
-    //     const article = await articleService.getByIdAndByStore(id, storeId, orderId);
-    //     if (!article) {
-    //         res.sendStatus(404);
-    //         return;
-    //     }
-    //     res.status(200).json(new SuccessResponse(article));
-    // },
-    // =======================================================================================
-
     create : async (req, res) => {
         const data = req.body;
         const order = await orderService.create(data);

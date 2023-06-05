@@ -1,9 +1,9 @@
 
 const ArticleDTO = require("../dto/article.dto");
-const { Store, Order, Mark, Article_Order } = require("../models");
+const { Store, Mark, Article_Order } = require("../models");
 const db = require("../models");
 const Sequelize = require('sequelize');
-const Article_OrderModel = require("../models/article_order.model");
+
 
 
 const articleService = {
@@ -43,20 +43,6 @@ const articleService = {
 
         return article ? article : null;
     },
-
-    // ==============================================================
-    getByIdAndByStoreAndByOrder : async (id, storeId, orderId) => {
-        const article = await db.Article_Order.findOne({
-            where : { 
-                ArticleId : id,
-                store : storeId,
-                OrderId : orderId
-            }
-        });
-
-        return article ? article : null;
-    },
-    // ==============================================================
 
     
     create : async (articleToAdd) => {

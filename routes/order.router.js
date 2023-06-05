@@ -13,12 +13,6 @@ orderRouter.route('/:id')
     .put(orderController.update)
     .delete(orderController.delete)
 
-
-// ============================================================ 
-// articleRouter.route('/:id/article/:articleId/store/:storeId')
-// .get(articleController.getByIdAndByArticleAndByStore)
-// ============================================================ 
-
 orderRouter.route('/:id/createArticle')
     .post(orderController.createArticle)
 
