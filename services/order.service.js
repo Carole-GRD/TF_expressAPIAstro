@@ -60,20 +60,20 @@ const orderService = {
         try {
             const order = await db.Order.create(orderToAdd);
     
-            for (const article of orderToAdd.articles) {
-                await order.addArticles(article.id, {
-                    through : { 
-                        quantity: article.quantity,
-                        sending_status : article.sending_status,
-                        store: article.store
-                    }
-                }, transaction)    
-            }
+            // for (const article of orderToAdd.articles) {
+            //     await order.addArticles(article.id, {
+            //         through : { 
+            //             quantity: article.quantity,
+            //             sending_status : article.sending_status,
+            //             store: article.store
+            //         }
+            //     }, transaction)    
+            // }
 
             await transaction.commit();
 
             const addedOrder = await db.Order.findByPk(order.id, {
-                include : [ User, Article ]
+                include : [ User ]
             })
 
             return addedOrder ? new OrderDTO(addedOrder) : null;
@@ -185,7 +185,7 @@ const orderService = {
 
     deleteArticle : async (orderId, link) => {
         // console.log('orderId : ', orderId);
-        console.log('service - link !!!!!!!!!!!!!!!!!!!!!!!!!!!! : ', link);
+        // console.log('order.service.js - deleteArticle (link) !!!!!!!!!!!!!!!!!!!!!!!!!!!! : ', link);
 
         const transaction = await db.sequelize.transaction();
 

@@ -1,5 +1,6 @@
 const { Request, Response } = require('express');
 const authService = require('../services/auth.service');
+const ErrorResponse = require('../utils/error.response');
 
 const jwt = require('../utils/jwt.utils');
 const { SuccessResponse } = require('../utils/success.response');
