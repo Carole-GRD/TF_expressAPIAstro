@@ -41,6 +41,7 @@ const userController = {
         if (req.file) {
             const filename = req.file.filename;
             data.avatar = `/images/avatars/${filename}`;
+            
         }
         // -----------------------------------------
         console.log(data);
@@ -75,6 +76,7 @@ const userController = {
     updateAvatar : async (req, res) => {
 
         const id = req.params.id;
+        // console.log('user.controller (id): ', id);
 
         // const connectedUserRole = req.user.role;
         // const connectedUserId = req.user.id;
@@ -84,8 +86,9 @@ const userController = {
         //     return;
         // }
         
+        
         const filename = req.file.filename;
-
+        // console.log('user.controller (filename): ', filename);
         const isUpdated = await userService.updateAvatar(id, filename);
 
         if (!isUpdated) {

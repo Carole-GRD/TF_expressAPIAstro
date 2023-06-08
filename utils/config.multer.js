@@ -7,9 +7,11 @@ const uuid = require('uuid');
 
 const config = (folder) => {
     
+    console.log('config.multer (folder) : ' , folder);
     return storage = multer.diskStorage({ 
         destination : (req, file, callback) => {
             // callback(null, `/images/${folder}`);
+            console.log(`config.multer  =>    public/images/${folder}`);
             callback(null, `public/images/${folder}`);
         },
         filename : (req, file, callback) => {

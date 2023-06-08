@@ -44,7 +44,8 @@ if(process.env.NODE_ENV === 'development') {
 
 // Middleware app-lvl
 app.use(express.json());
-app.use(express.static('public'));
+// app.use(express.static('public'));
+app.use('/public', express.static('public'));
 
 
 // Router
