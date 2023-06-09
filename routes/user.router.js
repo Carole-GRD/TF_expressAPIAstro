@@ -26,6 +26,8 @@ userRouter.route('/:id')
 
 userRouter.route('/:id/avatar')
     .patch(upload.single('avatar'), userController.updateAvatar)
-   
+
+userRouter.route('/:id/password')
+    .patch(userController.updatePassword)
 
 module.exports = userRouter;

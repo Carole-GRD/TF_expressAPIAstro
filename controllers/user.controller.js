@@ -86,7 +86,7 @@ const userController = {
         //     return;
         // }
         
-        
+
         const filename = req.file.filename;
         // console.log('user.controller (filename): ', filename);
         const isUpdated = await userService.updateAvatar(id, filename);
@@ -98,6 +98,19 @@ const userController = {
 
         res.location = '/user/' + id;
         res.status(204).json(new SuccessResponse({ msg : 'Avatar update success'}, 204));
+    },
+
+    updatePassword : async (req, res) => {
+        const id = req.params.id;
+        const data = req.body;
+        // console.log('user.controller - updatePassword (data) : ', data);
+        const isPasswordUpdated = await userService.updatePassword(id, data);
+
+        if (!isPasswordUpdated) {
+            res.sendStatus(404);
+            return;
+        }  
+        res.sendStatus(204);
     },
 
     /** 

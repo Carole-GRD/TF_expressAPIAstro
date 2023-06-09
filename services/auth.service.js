@@ -8,7 +8,7 @@ const authService = {
 
     register : async (userToAdd) => {
 
-        console.log('auth.service.js -> register : ', userToAdd);
+        // console.log('auth.service.js -> register : ', userToAdd);
 
         const hashPwd = await argon2.hash(userToAdd.password);
 
