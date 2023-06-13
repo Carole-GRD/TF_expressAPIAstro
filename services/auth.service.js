@@ -2,7 +2,7 @@ const argon2 = require("argon2");
 const UserDTO = require("../dto/user.dto");
 const db = require("../models");
 const { Op } = require("sequelize");
-
+const jwt = require('../utils/jwt.utils');
 
 const authService = {
 
@@ -47,6 +47,31 @@ const authService = {
 
         return new UserDTO(userToConnect);
 
+    },
+
+
+    validateToken : async (token) => {
+
+        try {
+            // Votre logique de validation du token et d'obtention des informations de l'utilisateur à partir de votre modèle Sequelize
+            const payload = await jwt.decode(token);
+            // console.log('auth.service.js - validateToken (payload) : ', payload);
+            // console.log('auth.service.js - validateToken (payload.id) : ', payload.id);
+
+            // Utiliser la méthode findByPk() pour trouver l'utilisateur correspondant à l'identifiant
+            const userToConnect = await db.User.findByPk(payload.id);
+            // console.log('auth.service.js - validateToken (userToConnect) : ', userToConnect);
+        
+            if (userToConnect) {
+              // Retournez les informations de l'utilisateur si le token est valide
+              return new UserDTO(userToConnect);
+            } else {
+              // Lancez une exception si le token est invalide ou l'utilisateur n'est pas trouvé
+              throw new Error('Invalid token');
+            }
+          } catch (error) {
+            throw error;
+          }
     }
 
 }

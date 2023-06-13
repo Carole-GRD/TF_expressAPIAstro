@@ -11,4 +11,7 @@ authRouter.route('/login')
     .post(authController.login)
 
 
+authRouter.route('/validateToken')
+    .post(authController.validateToken)
+
 module.exports = authRouter;

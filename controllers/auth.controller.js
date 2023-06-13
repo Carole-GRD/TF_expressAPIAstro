@@ -53,6 +53,21 @@ const authController = {
 
         const token = await jwt.encode(userToConnect);
         res.status(200).json(new SuccessResponse({token, userToConnect}));
+    },
+
+    validateToken : async (req, res) => {
+        const { token } = req.body;
+
+        try {
+            // Appelez le service d'authentification pour valider le token et obtenir les informations de l'utilisateur
+            const userToConnect = await authService.validateToken(token);
+
+            // Si la validation du token réussit, renvoyez les informations de l'utilisateur en tant que réponse
+            res.json({ success: true, userToConnect });
+        } catch (error) {
+            // Si la validation du token échoue, renvoyez une réponse d'erreur appropriée
+            res.status(400).json({ success: false, message: 'Invalid token' });
+        }
     }
 }
 
