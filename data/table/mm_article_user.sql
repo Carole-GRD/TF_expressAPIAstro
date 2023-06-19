@@ -1,4 +1,4 @@
-
+-- ATTENTION : il faut au moins 5 utilisateurs
 
 USE DBexpressAstro;
 

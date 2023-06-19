@@ -53,25 +53,23 @@ const authService = {
     validateToken : async (token) => {
 
         try {
-            // Votre logique de validation du token et d'obtention des informations de l'utilisateur à partir de votre modèle Sequelize
+            // Valider le token et récupérer les informations de l'utilisateur à partir du modèle Sequelize
             const payload = await jwt.decode(token);
             // console.log('auth.service.js - validateToken (payload) : ', payload);
             // console.log('auth.service.js - validateToken (payload.id) : ', payload.id);
 
-            // Utiliser la méthode findByPk() pour trouver l'utilisateur correspondant à l'identifiant
+            // Trouver l'utilisateur correspondant à l'identifiant 
             const userToConnect = await db.User.findByPk(payload.id);
             // console.log('auth.service.js - validateToken (userToConnect) : ', userToConnect);
         
             if (userToConnect) {
-              // Retournez les informations de l'utilisateur si le token est valide
-              return new UserDTO(userToConnect);
+                return new UserDTO(userToConnect);
             } else {
-              // Lancez une exception si le token est invalide ou l'utilisateur n'est pas trouvé
-              throw new Error('Invalid token');
+                throw new Error('Invalid token');
             }
-          } catch (error) {
+        } catch (error) {
             throw error;
-          }
+        }
     }
 
 }

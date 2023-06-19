@@ -3,6 +3,7 @@
 
 -- rajouter les ORDER après (voir order.sql) car elles sont liées à un "User"
 -- rajouter les MM_Article_User après (voir mm_article_user.sql) car elles sont liées  à un "User"
+-- ↪ ATTENTION : il faut au moins 5 utilisateurs pour les MM_Article_User
 -- rajouter les Article_Order après (voir Article_Order.sql) car elles sont liées à un "Order" qui est lui-même lié à un "User"
 
 
