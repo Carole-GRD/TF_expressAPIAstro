@@ -15,7 +15,7 @@ const articleService = {
             where : Sequelize.literal(
                     /* Injection d'une partie de la requête "à la main" pour obtenir uniquement les articles qui existent dans la Many-To-Many (MM_Article_Store) */
                     `EXISTS (SELECT * FROM [dbo].[MM_Article_Store] WHERE ArticleId = [Article].[id])`
-                  )
+                )
         });
         // console.log('rows[0] : ', rows[0]);
         return {
@@ -47,35 +47,35 @@ const articleService = {
     
     create : async (articleToAdd) => {
         
-        const transaction = await db.sequelize.transaction();
+        // const transaction = await db.sequelize.transaction();
 
-        try {
+        // try {
 
             const article = await db.Article.create(articleToAdd);
 
-            for (const store of articleToAdd.stores) {
-                await article.addStores(store.id, {
-                    through : 
-                            { 
-                                price : store.price,
-                                discount : store.discount,
-                                stock : store.stock
-                            }
-                }, transaction)
-            }
+            // for (const store of articleToAdd.stores) {
+            //     await article.addStores(store.id, {
+            //         through : 
+            //                 { 
+            //                     price : store.price,
+            //                     discount : store.discount,
+            //                     stock : store.stock
+            //                 }
+            //     }, transaction)
+            // }
 
-            await transaction.commit();
+            // await transaction.commit();
 
             const addedArticle = await db.Article.findByPk(article.id);
 
             return addedArticle ? new ArticleDTO(addedArticle) : null;
 
-        }
-        catch (err) {
-            console.log('article.service - create (err) : ', err);
-            await transaction.rollback();
-            return null;
-        }
+        // }
+        // catch (err) {
+        //     console.log('article.service - create (err) : ', err);
+        //     await transaction.rollback();
+        //     return null;
+        // }
     },
     
     update : async (id, articleToUpdate) => {
@@ -160,7 +160,7 @@ const articleService = {
             
             return likedArticles;
 
-      },
+    },
 
 
 
@@ -176,7 +176,7 @@ const articleService = {
             }
 
             // Récupération du store
-            const store = await Store.findByPk(storeData.id);
+            const store = await Store.findByPk(storeData.StoreId);
             if (!store) {
             throw new Error('Store not found');
             }
@@ -206,47 +206,50 @@ const articleService = {
         }
     },
 
-    createStore : async (articleId, storeData) => {
-        const transaction = await db.sequelize.transaction();
+    // A PRIORI CETTE METHODE NE FONCTIONNE PAS !
+    // Il faut utiliser la méthode "updateStore"
+    // createStore : async (articleId, storeData) => {
+    //     console.log('storeData : ', storeData);
+    //     const transaction = await db.sequelize.transaction();
 
-        try {
+    //     try {
 
-            // Récupération de l'article
-            const article = await db.Article.findByPk(articleId);
-            if (!article) {
-            throw new Error('Article not found');
-            }
+    //         // Récupération de l'article
+    //         const article = await db.Article.findByPk(articleId);
+    //         if (!article) {
+    //             throw new Error('Article not found');
+    //         }
 
-            // Récupération du store
-            const store = await db.Store.findByPk(storeData.id);
-            if (!store) {
-            throw new Error('Store not found');
-            }
+    //         // Récupération du store
+    //         const store = await db.Store.findByPk(storeData.StoreId);
+    //         if (!store) {
+    //             throw new Error('Store not found');
+    //         }
 
-            // Mise à jour des attributs de la relation Many-to-Many
-            await article.addStore(store, {
-                through: {
-                price: storeData.price,
-                discount: storeData.discount,
-                stock: storeData.stock
-                },
-                transaction: transaction
-            });
+    //         // Mise à jour des attributs de la relation Many-to-Many
+    //         await article.addStore(store, {
+    //             through: {
+    //             price: storeData.price,
+    //             discount: storeData.discount,
+    //             stock: storeData.stock
+    //             },
+    //             transaction: transaction
+    //         });
 
-            // Validation de la transaction
-            await transaction.commit();
+    //         // Validation de la transaction
+    //         await transaction.commit();
 
-            // Retourne l'article mis à jour
-            const addedArticle = await db.Article.findByPk(articleId, {
-                include: [Store]
-            });
-            return addedArticle;
-        } catch (error) {
-            // Annulation de la transaction en cas d'erreur
-            await transaction.rollback();
-            throw error;
-        }
-    },
+    //         // Retourne l'article mis à jour
+    //         const addedArticle = await db.Article.findByPk(articleId, {
+    //             include: [Store]
+    //         });
+    //         return addedArticle;
+    //     } catch (error) {
+    //         // Annulation de la transaction en cas d'erreur
+    //         await transaction.rollback();
+    //         throw error;
+    //     }
+    // },
 
     deleteteStore : async (articleId, listStoreId) => {
         const transaction = await db.sequelize.transaction();

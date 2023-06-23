@@ -74,7 +74,7 @@ const articleController = {
         res.location('/article/' + articleId);  
 
         res.status(201).json(new SuccessResponse({ msg : 'Like success' }, 201));
-   
+
     },
 
     disLike : async (req, res) => {
@@ -118,22 +118,29 @@ const articleController = {
         res.status(201).json(new SuccessResponse({ msg : 'Store updated with success' }, 201));
     },
 
-    createStore : async (req, res) => {
-        const articleId = req.params.id;
-        const storeData = req.body;
 
-        const storeCreate = await articleService.createStore(articleId, storeData);
+    // A PRIORI CETTE METHODE NE FONCTIONNE PAS !
+    // Il faut utiliser la méthode "updateStore" 
+    // Ces deux méthode sont identique en tous points souf l'appel au service
+    //      articleService.updateStore()   VS   articleService.createStore()
+    //              et la route  POST VS PUT
 
-        if (!storeCreate) {
-            res.status(404).json(new ErrorResponse('articleId or storeId not found', 404));
-            return;
-        }
+    // createStore : async (req, res) => {
+    //     const articleId = req.params.id;
+    //     const storeData = req.body;
 
-        res.location('/article/' + articleId); 
+    //     const storeCreate = await articleService.createStore(articleId, storeData);
+
+    //     if (!storeCreate) {
+    //         res.status(404).json(new ErrorResponse('articleId or storeId not found', 404));
+    //         return;
+    //     }
+
+    //     res.location('/article/' + articleId); 
         
-        res.status(201).json(new SuccessResponse({ msg : 'Link successfully added' }, 201));
+    //     res.status(201).json(new SuccessResponse({ msg : 'Link successfully added' }, 201));
         
-    },
+    // },
 
     deleteteStore : async (req, res) => {
         const articleId = req.params.id;

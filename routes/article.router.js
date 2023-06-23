@@ -30,8 +30,8 @@ articleRouter.route('/:id/disLike')
 articleRouter.route('/:id/updateStore')
     .put(articleController.updateStore)
 
-articleRouter.route('/:id/createStore')
-    .post(articleController.createStore)
+// articleRouter.route('/:id/createStore')
+//     .post(articleController.createStore)
 
 articleRouter.route('/:id/deleteStore')
     .delete(articleController.deleteteStore)
