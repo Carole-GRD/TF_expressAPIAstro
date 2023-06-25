@@ -106,7 +106,7 @@ const articleController = {
         const storeData = req.body;
 
         const storeUpdated = await articleService.updateStore(articleId, storeData);
-        console.log('article.controller - updateStore (storeUpdated) : ', storeUpdated);
+        // console.log('article.controller - updateStore (storeUpdated) : ', storeUpdated);
 
         if (!storeUpdated) {
             res.status(404).json(new ErrorResponse('articleId or storeId not found', 404));
